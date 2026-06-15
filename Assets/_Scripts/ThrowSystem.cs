@@ -12,9 +12,12 @@ public class ThrowSystem : MonoBehaviour
     public float throwForce = 15f;
     public int trajectorySegments = 20;
 
+    private PlayerController player;
+
     private void Awake()
     {
         input = FindObjectOfType<InputManager>();
+        player = GetComponent<PlayerController>();
         if (trajectoryLine != null) trajectoryLine.enabled = false;
     }
 
@@ -32,6 +35,12 @@ public class ThrowSystem : MonoBehaviour
         }
     }
 
+    private Vector3 GetThrowDirection()
+    {
+        float directionX = (player != null && !player.facingRight) ? -1f : 1f;
+        return new Vector3(directionX, 0.5f, 0f).normalized;
+    }
+
     private void DrawTrajectory()
     {
         if (trajectoryLine == null || throwPoint == null) return;
@@ -39,8 +48,8 @@ public class ThrowSystem : MonoBehaviour
         trajectoryLine.enabled = true;
         trajectoryLine.positionCount = trajectorySegments;
         
-        // Dirección: Adelante y ligeramente hacia arriba
-        Vector3 throwDirection = (transform.forward + Vector3.up * 0.5f).normalized;
+        // Dirección basada en hacia dónde mira el jugador
+        Vector3 throwDirection = GetThrowDirection();
         Vector3 initialVelocity = throwDirection * throwForce;
         
         float timeStep = 0.1f;
@@ -62,7 +71,7 @@ public class ThrowSystem : MonoBehaviour
         
         if (rb != null)
         {
-            Vector3 throwDirection = (transform.forward + Vector3.up * 0.5f).normalized;
+            Vector3 throwDirection = GetThrowDirection();
             rb.linearVelocity = throwDirection * throwForce;
         }
     }

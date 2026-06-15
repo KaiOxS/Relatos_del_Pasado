@@ -41,4 +41,9 @@ public class LevelManager : MonoBehaviour
             Debug.Log("Jugador reiniciado desde el Checkpoint.");
         }
     }
+
+    public void RestartScene()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+    }
 }

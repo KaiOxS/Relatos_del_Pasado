@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(StaminaSystem))]
@@ -49,6 +50,11 @@ public class PlayerController : MonoBehaviour
     [Tooltip("El personaje se mantendrá estricto en este valor Z")]
     public float fixedZPosition = 0f;
 
+    [Header("Visuales (2D Sprite)")]
+    public SpriteRenderer spriteRenderer;
+    public Animator animator;
+    public bool facingRight { get; private set; } = true;
+
     private Vector3 velocity;
     private bool isGrounded;
 
@@ -65,6 +71,9 @@ public class PlayerController : MonoBehaviour
         if (input == null) Debug.LogError("No se encontró InputManager en la escena.");
         originalHeight = controller.height;
         originalCenter = controller.center;
+
+        if (spriteRenderer == null) spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        if (animator == null) animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -86,6 +95,34 @@ public class PlayerController : MonoBehaviour
 
         ApplyGravity();
         Enforce25D();
+        UpdateVisuals();
+    }
+
+    private void UpdateVisuals()
+    {
+        if (spriteRenderer == null) return;
+
+        // Forzar que el objeto del sprite siempre mire hacia la cámara (Z-)
+        // Esto evita que herede rotaciones o que se vea de lado
+        spriteRenderer.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+        // Si tenemos un Animator, le pasamos el estado actual
+        if (animator != null)
+        {
+            animator.SetInteger("state", (int)currentState);
+        }
+
+        // Voltear el sprite según la dirección del movimiento en X
+        if (input.MoveInput.x > 0.1f)
+        {
+            spriteRenderer.flipX = false;
+            facingRight = true;
+        }
+        else if (input.MoveInput.x < -0.1f)
+        {
+            spriteRenderer.flipX = true;
+            facingRight = false;
+        }
     }
 
     private void CheckGrounded()
@@ -145,6 +182,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private float slideDirectionX;
+
     private void HandleStateAndMovement()
     {
         float currentSpeed = walkSpeed;
@@ -200,13 +239,6 @@ public class PlayerController : MonoBehaviour
         // --- APLICAR MOVIMIENTO ---
         controller.Move(moveDirection * (currentSpeed * Time.deltaTime));
 
-        // --- APLICAR ROTACIÓN ---
-        if (moveDirection != Vector3.zero)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-        }
-
         // --- CONDICIÓN DE SALTO ---
         if (jumpBufferTimer > 0f)
         {
@@ -247,6 +279,9 @@ public class PlayerController : MonoBehaviour
         slideCooldownTimer = slideCooldown; // Reiniciar cooldown
         currentState = PlayerState.Sliding;
 
+        // Guardar la dirección del slide (X)
+        slideDirectionX = input.MoveInput.x > 0 ? 1f : -1f;
+
         // Reducir la altura y bajar el centro para que no flote ni atraviese el suelo
         controller.height = slideHeight;
         controller.center = new Vector3(originalCenter.x, originalCenter.y - (originalHeight - slideHeight) / 2f, originalCenter.z);
@@ -259,8 +294,8 @@ public class PlayerController : MonoBehaviour
     {
         slideTimer -= Time.deltaTime;
 
-        // El personaje se desliza hacia adelante (usando su rotación actual)
-        controller.Move(transform.forward * (slideSpeed * Time.deltaTime));
+        // El personaje se desliza estrictamente en el eje X
+        controller.Move(new Vector3(slideDirectionX, 0, 0) * (slideSpeed * Time.deltaTime));
 
         if (slideTimer <= 0f)
         {
@@ -311,6 +346,33 @@ public class PlayerController : MonoBehaviour
             Vector3 pos = transform.position;
             pos.z = fixedZPosition;
             transform.position = pos;
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("enemyAttack"))
+        {
+            RestartGame();
+        }
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.CompareTag("enemyAttack"))
+        {
+            RestartGame();
+        }
+    }
+
+    private void RestartGame()
+    {
+        if (LevelManager.Instance != null)
+        {
+            LevelManager.Instance.RestartScene();
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

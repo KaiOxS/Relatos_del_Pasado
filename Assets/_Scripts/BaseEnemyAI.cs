@@ -94,7 +94,14 @@ public abstract class BaseEnemyAI : MonoBehaviour
     protected void ExecuteInstaKill()
     {
         Debug.Log("Insta-Kill ejecutado por " + gameObject.name);
-        // TODO: Llamar al LevelManager para reiniciar el checkpoint
+        if (LevelManager.Instance != null)
+        {
+            LevelManager.Instance.RestartScene();
+        }
+        else
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

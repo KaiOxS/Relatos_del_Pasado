@@ -30,7 +30,8 @@ public class CameraController : MonoBehaviour
         // Calcular el desplazamiento anticipado basado en hacia dónde mira el jugador
         if (player != null && player.currentState != PlayerController.PlayerState.Idle)
         {
-            Vector3 targetLookAhead = target.forward * lookAheadDistance;
+            float directionX = player.facingRight ? 1f : -1f;
+            Vector3 targetLookAhead = new Vector3(directionX, 0, 0) * lookAheadDistance;
             currentLookAhead = Vector3.Lerp(currentLookAhead, targetLookAhead, Time.deltaTime * lookAheadSpeed);
         }
         else
