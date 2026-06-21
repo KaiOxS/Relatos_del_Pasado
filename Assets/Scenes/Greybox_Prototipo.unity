@@ -179,8 +179,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
+  far clip plane: 30
+  field of view: 35
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -207,7 +207,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.41, y: -1.1, z: -7.06}
+  m_LocalPosition: {x: 0.03, y: -0.6, z: -7.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
   target: {fileID: 474486894}
-  offset: {x: 0, y: 3, z: -15}
+  offset: {x: 0, y: 1, z: -10}
   smoothTime: 0.25
   lookAheadDistance: 3
   lookAheadSpeed: 2
@@ -382,7 +382,7 @@ Transform:
   m_GameObject: {fileID: 409792293}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 25, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -592,6 +592,9 @@ MonoBehaviour:
   gravity: -20
   fallMultiplier: 1.5
   lowJumpMultiplier: 2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
   coyoteTime: 0.15
   jumpBufferTime: 0.15
   slideSpeed: 8
@@ -604,9 +607,7 @@ MonoBehaviour:
   wallSlideSpeed: 2
   fixedZPosition: 0
   spriteRenderer: {fileID: 762087176}
-  idleSprite: {fileID: 21300000, guid: 0d949d61a01e92e4584377237543d53e, type: 3}
-  walkSprite: {fileID: 21300000, guid: 17c0107a916271746b7ba0810c3ce090, type: 3}
-  runSprite: {fileID: 21300000, guid: dd4b20b101dd08b42bec1a6e1fdb1fa2, type: 3}
+  animator: {fileID: 0}
   currentState: 0
 --- !u!114 &474486889
 MonoBehaviour:
@@ -739,7 +740,7 @@ Transform:
   m_GameObject: {fileID: 474486887}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -986,6 +987,7 @@ GameObject:
   m_Component:
   - component: {fileID: 762087177}
   - component: {fileID: 762087176}
+  - component: {fileID: 762087178}
   m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
@@ -1042,12 +1044,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 0d949d61a01e92e4584377237543d53e, type: 3}
+  m_Sprite: {fileID: 1888514058, guid: 0d949d61a01e92e4584377237543d53e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 12.8, y: 12.8}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1061,12 +1063,34 @@ Transform:
   m_GameObject: {fileID: 762087175}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: -1.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 474486894}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &762087178
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762087175}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4a393871ff124df4aa31a1c04aa50c58, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0

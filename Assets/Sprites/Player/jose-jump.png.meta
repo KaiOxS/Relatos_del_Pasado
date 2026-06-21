@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f451eb9b0ca4295469a4e469183cc94d
+guid: 79876816f9e3fd743b12d78c98669423
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -52,7 +52,7 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 1
+  alphaIsTransparency: 0
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jose-run_0
+      name: jose-jump_0
       rect:
         serializedVersion: 2
         x: 0
@@ -125,14 +125,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8979fe988cdfbd34c969a6e0d832e6ad
-      internalID: 796157361
+      spriteID: e1578582a485d9a4e9c6740ec7cb06ed
+      internalID: -394422362
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jose-run_1
+      name: jose-jump_1
       rect:
         serializedVersion: 2
         x: 256
@@ -147,14 +147,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8fe023d68b1c0294b92de63018666b6c
-      internalID: -195225602
+      spriteID: 12ad38d2ed4b8764286a3be927541eb8
+      internalID: -78757981
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jose-run_2
+      name: jose-jump_2
       rect:
         serializedVersion: 2
         x: 512
@@ -169,14 +169,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a831d0628e19bbe4e8c63ede8db2d5c5
-      internalID: -41127260
+      spriteID: 0b188b034b8f8cd40afea1297db12c8a
+      internalID: 1242952211
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jose-run_3
+      name: jose-jump_3
       rect:
         serializedVersion: 2
         x: 768
@@ -191,14 +191,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29c8d2c4ce829d142ac2557c6026f734
-      internalID: 1374803578
+      spriteID: b5793c258a1edd64caec7efa27cb26c5
+      internalID: 399706569
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jose-run_4
+      name: jose-jump_4
       rect:
         serializedVersion: 2
         x: 1024
@@ -213,14 +213,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae4117024d0a0584dbb4fc190820990f
-      internalID: -2141348825
+      spriteID: c3349548210f5584c83510f9254ca91a
+      internalID: 311253200
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jose-run_5
+      name: jose-jump_5
       rect:
         serializedVersion: 2
         x: 0
@@ -235,14 +235,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74b0b3261c7761243bc4e7635128a094
-      internalID: -1677315144
+      spriteID: af0738a031910ae4586a575052ed132f
+      internalID: -2140698323
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jose-run_6
+      name: jose-jump_6
       rect:
         serializedVersion: 2
         x: 256
@@ -257,14 +257,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 030ad9639104dea4a8110b4ebc270827
-      internalID: -129788264
+      spriteID: 1fc80079397dc8840a06638f92e4c7a1
+      internalID: -241541033
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jose-run_7
+      name: jose-jump_7
       rect:
         serializedVersion: 2
         x: 512
@@ -279,14 +279,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0598df1cf9291b4cb47508b118e4079
-      internalID: 1325811203
+      spriteID: 5648a212bd43ddb4a9c2063f0a8d3b71
+      internalID: 255427880
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jose-run_8
+      name: jose-jump_8
       rect:
         serializedVersion: 2
         x: 768
@@ -301,14 +301,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84baac486d52715419848928ea9eea2c
-      internalID: 1352362149
+      spriteID: a182212a78f1bf34e86b921366d7a6f4
+      internalID: 353617333
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jose-run_9
+      name: jose-jump_9
       rect:
         serializedVersion: 2
         x: 1024
@@ -323,14 +323,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbeaa7d2c879b0445bb8d79bd71f558f
-      internalID: 1052238028
+      spriteID: 898eb404422fff54b82c5c783b71e424
+      internalID: -207160312
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jose-run_10
+      name: jose-jump_10
       rect:
         serializedVersion: 2
         x: 0
@@ -345,14 +345,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a0dd6b656876ea42a2623283cd30c16
-      internalID: 2019745918
+      spriteID: cf8fef6b59fe4ad43b44b9d1b77be0d8
+      internalID: -533432763
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jose-run_11
+      name: jose-jump_11
       rect:
         serializedVersion: 2
         x: 256
@@ -367,14 +367,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ce3c3d0ecfbd834a9a83429bbe81cef
-      internalID: -1643913608
+      spriteID: 6214e1c0295a9d846be8b7025ca68a25
+      internalID: -533525129
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jose-run_12
+      name: jose-jump_12
       rect:
         serializedVersion: 2
         x: 512
@@ -389,14 +389,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e30e036194651a46b7412959efeb0a5
-      internalID: 1607052158
+      spriteID: 50f79b99da09efa40b1c8c32c9782b08
+      internalID: -283253824
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jose-run_13
+      name: jose-jump_13
       rect:
         serializedVersion: 2
         x: 768
@@ -411,14 +411,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12d27a72e09cb11438967b66c30568f5
-      internalID: 2124592584
+      spriteID: ddbe10025e882404bb9f575f8e1ead0a
+      internalID: -1168295869
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jose-run_14
+      name: jose-jump_14
       rect:
         serializedVersion: 2
         x: 1024
@@ -433,14 +433,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 208aa9f7413627e4a8bdffede8c05ef5
-      internalID: 1436067714
+      spriteID: fe7999c353d8cba4c8d92892a22b903f
+      internalID: -1894920512
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jose-run_15
+      name: jose-jump_15
       rect:
         serializedVersion: 2
         x: 0
@@ -455,14 +455,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b2c6ed60437dc2e44a3d8ce9f99cf164
-      internalID: 434399904
+      spriteID: cdfe6c2deccb88844b0e4d80107c398f
+      internalID: -749859209
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jose-run_16
+      name: jose-jump_16
       rect:
         serializedVersion: 2
         x: 256
@@ -477,14 +477,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4709d1a7bae56dc4fb514f0d0df1671c
-      internalID: -1039477540
+      spriteID: e80ee3ba5b6502245b4c1b8689598aca
+      internalID: 967353074
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jose-run_17
+      name: jose-jump_17
       rect:
         serializedVersion: 2
         x: 512
@@ -499,14 +499,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a11c5c8f46bb108468f1cd117842d0d4
-      internalID: -1935863713
+      spriteID: b014c84ad10bd26438260c08eac066a0
+      internalID: 87610747
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jose-run_18
+      name: jose-jump_18
       rect:
         serializedVersion: 2
         x: 768
@@ -521,14 +521,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08a62b96be5068e4c84297ec5bddeba3
-      internalID: 1695778354
+      spriteID: 1205826d75f732c41a8eb3d05a82c4f7
+      internalID: 1626814546
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jose-run_19
+      name: jose-jump_19
       rect:
         serializedVersion: 2
         x: 1024
@@ -543,14 +543,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42a66244b3d8e7b42878b871eef8c6a6
-      internalID: 382500803
+      spriteID: 437ca16303c4a81488fb0d73a9a67825
+      internalID: -342814970
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jose-run_20
+      name: jose-jump_20
       rect:
         serializedVersion: 2
         x: 0
@@ -565,14 +565,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a02ae7c137168a42a35120b744ee92a
-      internalID: 2031111275
+      spriteID: 78986721b6df8194ea9c3c70377e950f
+      internalID: 1913143093
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jose-run_21
+      name: jose-jump_21
       rect:
         serializedVersion: 2
         x: 256
@@ -587,14 +587,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: afa92ee6391e2a9469cca3ca620f0c31
-      internalID: 947024089
+      spriteID: c5d332b6464e4b0408a11abd4a1d5273
+      internalID: -2012246484
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jose-run_22
+      name: jose-jump_22
       rect:
         serializedVersion: 2
         x: 512
@@ -609,14 +609,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b57e97c287dc47b4ab5030f3e94b55c8
-      internalID: -1302260205
+      spriteID: 2935444ed5ac8ad40aab104722893230
+      internalID: -2076626355
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jose-run_23
+      name: jose-jump_23
       rect:
         serializedVersion: 2
         x: 768
@@ -631,14 +631,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19345b392e3b26b4d829691917c782cd
-      internalID: 994490199
+      spriteID: d7c8e94ecce300842a193a14db40da64
+      internalID: 1942456746
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jose-run_24
+      name: jose-jump_24
       rect:
         serializedVersion: 2
         x: 1024
@@ -653,8 +653,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4ec7ef7eecb7c445b703e7154606939
-      internalID: -658930452
+      spriteID: 726522ffb5b590b48b4811b7f14abe2c
+      internalID: -521112793
       vertices: []
       indices: 
       edges: []
@@ -663,7 +663,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 6cca33b14fcd39a46ab3bcac6c9b7fe0
     internalID: 0
     vertices: []
     indices: 
@@ -673,33 +673,33 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":5.0,"y":5.0},"gridSpriteSize":{"x":256.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":256.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Jose-run_0: 796157361
-      Jose-run_1: -195225602
-      Jose-run_10: 2019745918
-      Jose-run_11: -1643913608
-      Jose-run_12: 1607052158
-      Jose-run_13: 2124592584
-      Jose-run_14: 1436067714
-      Jose-run_15: 434399904
-      Jose-run_16: -1039477540
-      Jose-run_17: -1935863713
-      Jose-run_18: 1695778354
-      Jose-run_19: 382500803
-      Jose-run_2: -41127260
-      Jose-run_20: 2031111275
-      Jose-run_21: 947024089
-      Jose-run_22: -1302260205
-      Jose-run_23: 994490199
-      Jose-run_24: -658930452
-      Jose-run_3: 1374803578
-      Jose-run_4: -2141348825
-      Jose-run_5: -1677315144
-      Jose-run_6: -129788264
-      Jose-run_7: 1325811203
-      Jose-run_8: 1352362149
-      Jose-run_9: 1052238028
+      jose-jump_0: -394422362
+      jose-jump_1: -78757981
+      jose-jump_10: -533432763
+      jose-jump_11: -533525129
+      jose-jump_12: -283253824
+      jose-jump_13: -1168295869
+      jose-jump_14: -1894920512
+      jose-jump_15: -749859209
+      jose-jump_16: 967353074
+      jose-jump_17: 87610747
+      jose-jump_18: 1626814546
+      jose-jump_19: -342814970
+      jose-jump_2: 1242952211
+      jose-jump_20: 1913143093
+      jose-jump_21: -2012246484
+      jose-jump_22: -2076626355
+      jose-jump_23: 1942456746
+      jose-jump_24: -521112793
+      jose-jump_3: 399706569
+      jose-jump_4: 311253200
+      jose-jump_5: -2140698323
+      jose-jump_6: -241541033
+      jose-jump_7: 255427880
+      jose-jump_8: 353617333
+      jose-jump_9: -207160312
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -16,10 +16,14 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed = 15f;
 
     [Header("Salto y Gravedad (GDD)")]
-    public float jumpHeight = 2.5f;
-    public float gravity = -20f;
-    public float fallMultiplier = 1.5f;
-    public float lowJumpMultiplier = 2f;
+    public float jumpHeight = 1.5f;
+    public float gravity = -40f;
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMultiplier = 3f;
+
+    [Header("Detección de Suelo")]
+    [Tooltip("Capas que se consideran suelo. Excluir la capa del jugador.")]
+    public LayerMask groundLayer = ~0;
 
     [Header("Tolerancia Táctil (Asistencias)")]
     public float coyoteTime = 0.15f;
@@ -72,8 +76,16 @@ public class PlayerController : MonoBehaviour
         originalHeight = controller.height;
         originalCenter = controller.center;
 
+        // Buscar componentes visuales en los hijos
         if (spriteRenderer == null) spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         if (animator == null) animator = GetComponentInChildren<Animator>();
+
+        // Si tenemos un sprite, ocultamos el cubo base para que no se superpongan
+        MeshRenderer cubeMesh = GetComponent<MeshRenderer>();
+        if (cubeMesh != null && spriteRenderer != null)
+        {
+            cubeMesh.enabled = false;
+        }
     }
 
     private void Update()
@@ -102,14 +114,39 @@ public class PlayerController : MonoBehaviour
     {
         if (spriteRenderer == null) return;
 
-        // Forzar que el objeto del sprite siempre mire hacia la cámara (Z-)
-        // Esto evita que herede rotaciones o que se vea de lado
+        // Asegurar que el sprite esté ligeramente al frente para evitar Z-fighting con el cubo
+        spriteRenderer.transform.localPosition = new Vector3(0, 0, -0.1f);
+        
+        // Forzar que el objeto del sprite siempre mire hacia adelante (plano 2.5D)
         spriteRenderer.transform.rotation = Quaternion.Euler(0, 0, 0);
 
-        // Si tenemos un Animator, le pasamos el estado actual
+        // Si tenemos un Animator, le pasamos el estado a través del parámetro "state"
         if (animator != null)
         {
-            animator.SetInteger("state", (int)currentState);
+            int animatorState = 0; // Default Idle
+            switch (currentState)
+            {
+                case PlayerState.Idle:
+                    animatorState = 0; // Idle
+                    break;
+                case PlayerState.Exhausted:
+                    // Si está exhausto pero se mueve, usa walk(1). Si está quieto, usa idle(0).
+                    animatorState = Mathf.Abs(input.MoveInput.x) > 0.1f ? 1 : 0;
+                    break;
+                case PlayerState.Walk:
+                    animatorState = 1; // Walk
+                    break;
+                case PlayerState.Sprint:
+                case PlayerState.Sliding:
+                    animatorState = 2; // Run
+                    break;
+                case PlayerState.Airborne:
+                case PlayerState.WallSliding:
+                    animatorState = 3; // Jump
+                    break;
+            }
+
+            animator.SetInteger("state", animatorState);
         }
 
         // Voltear el sprite según la dirección del movimiento en X
@@ -127,10 +164,20 @@ public class PlayerController : MonoBehaviour
 
     private void CheckGrounded()
     {
-        // Usar un SphereCast pequeño en la base del jugador para detectar el suelo
-        // Esto es más fiable que controller.isGrounded en 2.5D
-        Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - (controller.height / 2) + controller.radius, transform.position.z);
-        isGrounded = Physics.CheckSphere(spherePosition, controller.radius * 0.9f, ~0, QueryTriggerInteraction.Ignore);
+        // Posicionar la esfera exactamente en la base del CharacterController
+        // para asegurar que sobrepasa un poco el borde y toca el suelo real
+        Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - (controller.height / 2f), transform.position.z);
+        Collider[] colliders = Physics.OverlapSphere(spherePosition, controller.radius * 0.9f, groundLayer, QueryTriggerInteraction.Ignore);
+        
+        isGrounded = false;
+        foreach (Collider col in colliders)
+        {
+            if (col.gameObject != gameObject)
+            {
+                isGrounded = true;
+                break;
+            }
+        }
 
         if (isGrounded)
         {
@@ -153,9 +200,9 @@ public class PlayerController : MonoBehaviour
 
         if (isGrounded) return;
 
-        // Raycast para detectar muros a los lados
-        bool wallRight = Physics.Raycast(transform.position, Vector3.right, wallDistance);
-        bool wallLeft = Physics.Raycast(transform.position, Vector3.left, wallDistance);
+        // Raycast para detectar muros a los lados (usa groundLayer para excluir al jugador)
+        bool wallRight = Physics.Raycast(transform.position, Vector3.right, wallDistance, groundLayer);
+        bool wallLeft = Physics.Raycast(transform.position, Vector3.left, wallDistance, groundLayer);
 
         if (wallRight || wallLeft)
         {
