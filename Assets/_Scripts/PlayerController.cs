@@ -175,7 +175,7 @@ public class PlayerController : MonoBehaviour
                     animatorState = 4; // Crouch
                     break;
                 case PlayerState.LedgeGrabbing:
-                    animatorState = 3; // Usa la animación de salto/airborne mientras cuelga
+                    animatorState = 5; // Animación de escalar / agarrarse al borde
                     break;
             }
 
