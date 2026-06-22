@@ -42,6 +42,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 originalCenter;
     public float slideHeight = 1f;
 
+    [Header("Agacharse (Crouch)")]
+    public float crouchHeight = 1f;
+    private bool isCrouching;
+
     [Header("Salto de Pared (Wall Jump)")]
     public float wallDistance = 0.6f;
     public float wallJumpForceX = 8f;
@@ -49,6 +53,18 @@ public class PlayerController : MonoBehaviour
     public float wallSlideSpeed = 2f;
     private bool isWallSliding;
     private int wallDirection; // 1 = Derecha, -1 = Izquierda
+
+    [Header("Agarre de Borde (Ledge Grab)")]
+    [Tooltip("Distancia horizontal del raycast para detectar el muro lateral.")]
+    public float ledgeCheckDistance = 0.65f;
+    [Tooltip("Distancia vertical del raycast para confirmar el borde libre encima.")]
+    public float ledgeCheckHeight = 0.5f;
+    [Tooltip("Fuerza vertical al trepar el borde.")]
+    public float ledgeClimbForceY = 8f;
+    [Tooltip("Fuerza horizontal al trepar el borde (salir del muro).")]
+    public float ledgeClimbForceX = 4f;
+    private bool isGrabbingLedge;
+    private int ledgeDirection; // 1 = muro a la derecha, -1 = muro a la izquierda
 
     [Header("Configuración 2.5D")]
     [Tooltip("El personaje se mantendrá estricto en este valor Z")]
@@ -63,9 +79,10 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
 
     // Máquina de estados modular
-    public enum PlayerState { Idle, Walk, Sprint, Exhausted, Airborne, Sliding, WallSliding }
+    public enum PlayerState { Idle, Walk, Sprint, Exhausted, Airborne, Sliding, WallSliding, Crouch, LedgeGrabbing }
     public PlayerState currentState;
 
+    [System.Obsolete]
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -94,9 +111,14 @@ public class PlayerController : MonoBehaviour
 
         CheckGrounded();
         CheckWall();
+        CheckLedge();
         HandleJumpBuffer();
 
-        if (isSliding)
+        if (isGrabbingLedge)
+        {
+            HandleLedgeGrab();
+        }
+        else if (isSliding)
         {
             HandleSlide();
         }
@@ -105,7 +127,12 @@ public class PlayerController : MonoBehaviour
             HandleStateAndMovement();
         }
 
-        ApplyGravity();
+        // La gravedad no se aplica mientras se agarra el borde
+        if (!isGrabbingLedge)
+        {
+            ApplyGravity();
+        }
+
         Enforce25D();
         UpdateVisuals();
     }
@@ -143,6 +170,12 @@ public class PlayerController : MonoBehaviour
                 case PlayerState.Airborne:
                 case PlayerState.WallSliding:
                     animatorState = 3; // Jump
+                    break;
+                case PlayerState.Crouch:
+                    animatorState = 4; // Crouch
+                    break;
+                case PlayerState.LedgeGrabbing:
+                    animatorState = 3; // Usa la animación de salto/airborne mientras cuelga
                     break;
             }
 
@@ -198,7 +231,8 @@ public class PlayerController : MonoBehaviour
         isWallSliding = false;
         wallDirection = 0;
 
-        if (isGrounded) return;
+        // No chequear paredes si ya está en el suelo o agarrado a un borde
+        if (isGrounded || isGrabbingLedge) return;
 
         // Raycast para detectar muros a los lados (usa groundLayer para excluir al jugador)
         bool wallRight = Physics.Raycast(transform.position, Vector3.right, wallDistance, groundLayer);
@@ -213,6 +247,75 @@ public class PlayerController : MonoBehaviour
             {
                 isWallSliding = true;
             }
+        }
+    }
+
+    private void CheckLedge()
+    {
+        // Si ya está en el suelo o en slide, no detectamos ledge
+        if (isGrounded || isSliding) return;
+
+        // Solo buscar ledge cuando el jugador está subiendo o en el pico del salto
+        // y no está ya agarrado
+        if (isGrabbingLedge) return;
+
+        // La detección se hace en la dirección que el jugador mira
+        int checkDir = facingRight ? 1 : -1;
+        Vector3 rayOrigin = transform.position; // Desde el centro del personaje
+
+        // Raycast 1: Horizontal – detecta si hay una pared al lado
+        RaycastHit hitWall;
+        bool wallHit = Physics.Raycast(rayOrigin, Vector3.right * checkDir, out hitWall, ledgeCheckDistance, groundLayer);
+
+        if (!wallHit) return; // No hay pared, no hay borde que agarrar
+
+        // Raycast 2: Desde arriba del borde hacia abajo – verifica que la cima sea accesible
+        // Origen: un poco más arriba del centro + en dirección de la pared
+        Vector3 aboveWallOrigin = rayOrigin + new Vector3(checkDir * ledgeCheckDistance, ledgeCheckHeight + 0.1f, 0f);
+        RaycastHit hitTop;
+        bool topClear = !Physics.Raycast(aboveWallOrigin, Vector3.down, out hitTop, ledgeCheckHeight + 0.3f, groundLayer);
+
+        // Si hay pared al lado PERO la cima está libre = hay un borde que agarrar
+        if (topClear)
+        {
+            // Solo agarrar si el jugador va hacia esa dirección
+            float inputDir = input.MoveInput.x;
+            bool movingTowardWall = (checkDir == 1 && inputDir > 0.1f) || (checkDir == -1 && inputDir < -0.1f);
+
+            if (movingTowardWall || velocity.y < 1f) // Agarra al caer o al empujar contra la pared
+            {
+                isGrabbingLedge = true;
+                ledgeDirection = checkDir;
+                velocity = Vector3.zero; // Detener todo movimiento
+            }
+        }
+    }
+
+    private void HandleLedgeGrab()
+    {
+        // Fijar el estado y detener movimiento
+        currentState = PlayerState.LedgeGrabbing;
+        velocity = Vector3.zero;
+
+        // Si el jugador suelta la dirección contraria al muro o presiona abajo, suelta el borde
+        bool releasingLedge = (ledgeDirection == 1 && input.MoveInput.x < -0.1f) ||
+                              (ledgeDirection == -1 && input.MoveInput.x > 0.1f) ||
+                              input.CrouchHeld;
+
+        if (releasingLedge)
+        {
+            isGrabbingLedge = false;
+            return;
+        }
+
+        // Si el jugador presiona Jump, TREPA el borde
+        if (jumpBufferTimer > 0f)
+        {
+            isGrabbingLedge = false;
+            // Impulso hacia arriba y hacia el lado opuesto al muro para quedar encima
+            velocity.y = ledgeClimbForceY;
+            velocity.x = ledgeDirection * ledgeClimbForceX;
+            jumpBufferTimer = 0f;
         }
     }
 
@@ -261,19 +364,32 @@ public class PlayerController : MonoBehaviour
                 input.ConsumeSlide();
             }
 
-            // Movimiento normal
-            if (moveDirection.magnitude > 0.1f)
+            // Agacharse
+            if (input.CrouchHeld && isGrounded && !isSliding)
             {
-                if (input.SprintHeld && staminaSystem.HasEnoughStamina(staminaSystem.sprintDrainRate * Time.deltaTime))
+                if (!isCrouching) StartCrouch();
+                
+                currentSpeed = 0f; // No se mueve agachado
+                currentState = PlayerState.Crouch;
+            }
+            else
+            {
+                if (isCrouching) StopCrouch();
+
+                // Movimiento normal
+                if (moveDirection.magnitude > 0.1f)
                 {
-                    currentSpeed = sprintSpeed;
-                    currentState = PlayerState.Sprint;
-                    staminaSystem.ConsumeStaminaOverTime(staminaSystem.sprintDrainRate);
-                }
-                else
-                {
-                    currentSpeed = walkSpeed;
-                    currentState = PlayerState.Walk;
+                    if (input.SprintHeld && staminaSystem.HasEnoughStamina(staminaSystem.sprintDrainRate * Time.deltaTime))
+                    {
+                        currentSpeed = sprintSpeed;
+                        currentState = PlayerState.Sprint;
+                        staminaSystem.ConsumeStaminaOverTime(staminaSystem.sprintDrainRate);
+                    }
+                    else
+                    {
+                        currentSpeed = walkSpeed;
+                        currentState = PlayerState.Walk;
+                    }
                 }
             }
         }
@@ -293,7 +409,7 @@ public class PlayerController : MonoBehaviour
             {
                 PerformJump();
             }
-            else if (isWallSliding || (wallDirection != 0 && !isGrounded))
+            else if (isWallSliding || (wallDirection != 0 && !isGrounded && !isGrabbingLedge))
             {
                 PerformWallJump();
             }
@@ -351,6 +467,20 @@ public class PlayerController : MonoBehaviour
             controller.height = originalHeight;
             controller.center = originalCenter;
         }
+    }
+
+    public void StartCrouch()
+    {
+        isCrouching = true;
+        controller.height = crouchHeight;
+        controller.center = new Vector3(originalCenter.x, originalCenter.y - (originalHeight - crouchHeight) / 2f, originalCenter.z);
+    }
+
+    public void StopCrouch()
+    {
+        isCrouching = false;
+        controller.height = originalHeight;
+        controller.center = originalCenter;
     }
 
     private void ApplyGravity()

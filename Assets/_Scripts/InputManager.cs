@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
     public bool SprintHeld { get; private set; }
     public bool SlideTriggered { get; private set; }
     public bool InteractTriggered { get; private set; }
+    public bool CrouchHeld { get; private set; }
     
     // Controles para Linterna y Lanzamiento
     public bool FlashlightTriggered { get; private set; }
@@ -36,6 +37,10 @@ public class InputManager : MonoBehaviour
         // Acciones Adicionales
         playerControls.Player.Slide.started += ctx => SlideTriggered = true;
         playerControls.Player.Interact.started += ctx => InteractTriggered = true;
+
+        // Agacharse (Comentado temporalmente para arreglar el error de compilación)
+        playerControls.Player.Crouch.started += ctx => CrouchHeld = true;
+        playerControls.Player.Crouch.canceled += ctx => CrouchHeld = false;
 
         // Linterna y Lanzamiento
         playerControls.Player.Flashlight.started += ctx => FlashlightTriggered = true;
