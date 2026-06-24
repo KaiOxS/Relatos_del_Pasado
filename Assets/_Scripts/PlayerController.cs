@@ -263,26 +263,21 @@ public class PlayerController : MonoBehaviour
         int checkDir = facingRight ? 1 : -1;
         Vector3 rayOrigin = transform.position; // Desde el centro del personaje
 
-        // Raycast 1: Horizontal – detecta si hay una pared al lado
-        RaycastHit hitWall;
-        bool wallHit = Physics.Raycast(rayOrigin, Vector3.right * checkDir, out hitWall, ledgeCheckDistance, groundLayer);
+        // Raycast 1: Horizontal a la altura del centro/pecho – detecta si hay una pared al lado
+        bool wallHit = Physics.Raycast(rayOrigin, Vector3.right * checkDir, ledgeCheckDistance, groundLayer);
 
-        if (!wallHit) return; // No hay pared, no hay borde que agarrar
+        // Raycast 2: Horizontal a la altura de la cabeza – no debe detectar pared si estamos en el borde superior
+        Vector3 headOrigin = rayOrigin + new Vector3(0, ledgeCheckHeight, 0);
+        bool headHit = Physics.Raycast(headOrigin, Vector3.right * checkDir, ledgeCheckDistance, groundLayer);
 
-        // Raycast 2: Desde arriba del borde hacia abajo – verifica que la cima sea accesible
-        // Origen: un poco más arriba del centro + en dirección de la pared
-        Vector3 aboveWallOrigin = rayOrigin + new Vector3(checkDir * ledgeCheckDistance, ledgeCheckHeight + 0.1f, 0f);
-        RaycastHit hitTop;
-        bool topClear = !Physics.Raycast(aboveWallOrigin, Vector3.down, out hitTop, ledgeCheckHeight + 0.3f, groundLayer);
-
-        // Si hay pared al lado PERO la cima está libre = hay un borde que agarrar
-        if (topClear)
+        // Si el pecho choca pero la cabeza no, estamos exactamente en el borde superior
+        if (wallHit && !headHit)
         {
-            // Solo agarrar si el jugador va hacia esa dirección
+            // Solo agarrar si el jugador va hacia esa dirección o está cayendo
             float inputDir = input.MoveInput.x;
             bool movingTowardWall = (checkDir == 1 && inputDir > 0.1f) || (checkDir == -1 && inputDir < -0.1f);
 
-            if (movingTowardWall || velocity.y < 1f) // Agarra al caer o al empujar contra la pared
+            if (movingTowardWall || velocity.y < 1f)
             {
                 isGrabbingLedge = true;
                 ledgeDirection = checkDir;
@@ -545,7 +540,7 @@ public class PlayerController : MonoBehaviour
     {
         if (LevelManager.Instance != null)
         {
-            LevelManager.Instance.RestartScene();
+            LevelManager.Instance.ShowGameOver();
         }
         else
         {

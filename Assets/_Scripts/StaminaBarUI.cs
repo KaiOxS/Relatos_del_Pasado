@@ -27,9 +27,9 @@ public class StaminaBarUI : MonoBehaviour
     [Tooltip("Segundos que la barra permanece visible antes de desvanecerse.")]
     public float visibleDuration = 3f;
     [Tooltip("Velocidad de desvanecimiento.")]
-    public float fadeSpeed = 2f;
+    public float fadeSpeed = 5f;
     [Tooltip("Alpha mínimo cuando está full y sin actividad.")]
-    public float minAlpha = 0.25f;
+    public float minAlpha = 0f;
 
     private StaminaSystem stamina;
     private float currentFill = 1f;
@@ -81,18 +81,19 @@ public class StaminaBarUI : MonoBehaviour
         {
             float blink = (Mathf.Sin(Time.time * blinkSpeed) + 1f) * 0.5f; // 0 a 1
             canvasGroup.alpha = Mathf.Lerp(0.4f, 1f, blink);
-            displayTimer = visibleDuration; // Mantener visible mientras está bajo
+            displayTimer = visibleDuration;
         }
         else if (canvasGroup != null)
         {
-            // Fade suave: visible tras consumo, se atenúa al recuperarse
-            if (displayTimer > 0)
+            // Solo es visible si no está al 100% (o si acaba de cambiar)
+            if (currentFill < 0.999f || displayTimer > 0)
             {
-                displayTimer -= Time.deltaTime;
+                if (currentFill >= 0.999f && displayTimer > 0) displayTimer -= Time.deltaTime;
                 canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha, 1f, Time.deltaTime * fadeSpeed);
             }
             else
             {
+                // Se desvanece por completo cuando está llena
                 canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha, minAlpha, Time.deltaTime * fadeSpeed);
             }
         }
