@@ -107,6 +107,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (Time.timeScale == 0f) return; // Detener todo movimiento si el juego está pausado
+
         if (slideCooldownTimer > 0) slideCooldownTimer -= Time.deltaTime;
 
         CheckGrounded();

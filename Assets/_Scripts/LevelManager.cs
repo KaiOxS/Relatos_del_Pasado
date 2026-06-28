@@ -18,26 +18,41 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<PlayerController>();
+
+        // Si hay un checkpoint guardado, movemos al jugador ahí al iniciar la escena
+        string checkpointName = PlayerPrefs.GetString("LastCheckpoint", "");
+        if (!string.IsNullOrEmpty(checkpointName))
+        {
+            GameObject checkpointObj = GameObject.Find(checkpointName);
+            if (checkpointObj != null)
+            {
+                currentCheckpoint = checkpointObj.transform;
+                if (player != null)
+                {
+                    // Desactivar temporalmente el controller para forzar el teletransporte
+                    CharacterController cc = player.GetComponent<CharacterController>();
+                    if (cc != null) cc.enabled = false;
+                    
+                    player.transform.position = currentCheckpoint.position;
+                    
+                    if (cc != null) cc.enabled = true;
+                }
+            }
+        }
     }
 
     public void SetCheckpoint(Transform newCheckpoint)
     {
         currentCheckpoint = newCheckpoint;
+        PlayerPrefs.SetString("LastCheckpoint", newCheckpoint.name);
+        PlayerPrefs.Save();
         Debug.Log("Checkpoint Guardado: " + newCheckpoint.name);
     }
 
     public void RestartFromCheckpoint()
     {
-        if (player != null && currentCheckpoint != null)
-        {
-            // Ocultar Game Over
-            if (gameOverPanel != null) gameOverPanel.SetActive(false);
-
-            // Resetear posición y estados
-            player.transform.position = currentCheckpoint.position;
-            // TODO: Restablecer estamina y curar estados
-            Debug.Log("Jugador reiniciado desde el Checkpoint.");
-        }
+        Time.timeScale = 1f; // Restaurar el tiempo antes de recargar
+        RestartScene(); // Recargamos la escena para reiniciar a los enemigos y objetos
     }
 
     public void ShowGameOver()
@@ -45,6 +60,7 @@ public class LevelManager : MonoBehaviour
         if (gameOverPanel != null)
         {
             gameOverPanel.SetActive(true);
+            Time.timeScale = 0f; // Congelar el juego
             Debug.Log("Game Over Panel Activado.");
         }
         else

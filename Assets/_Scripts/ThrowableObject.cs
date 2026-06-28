@@ -12,6 +12,13 @@ public class ThrowableObject : MonoBehaviour
         {
             hasHit = true;
             
+            // Si golpea directamente al enemigo, lo aturde (según el GDD)
+            BaseEnemyAI enemy = collision.gameObject.GetComponentInParent<BaseEnemyAI>();
+            if (enemy != null)
+            {
+                enemy.ApplyStun();
+            }
+
             // Avisar a la IA que hubo un ruido
             AIPerceptionManager.Instance?.ReportNoise(transform.position, noiseIntensity);
             
