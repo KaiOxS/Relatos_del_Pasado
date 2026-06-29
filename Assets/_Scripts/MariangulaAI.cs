@@ -10,14 +10,24 @@ public class MariangulaAI : BaseEnemyAI
     [Tooltip("Distancia a la que Mariangula intentará acercarse")]
     public float attackRange = 1.5f;
 
+    [Header("Animations")]
+    public Animator animator;
+    public SpriteRenderer spriteRenderer;
+    [Tooltip("Ajuste vertical del sprite para alinear los pies con el suelo")]
+    public float visualOffsetY = 0f;
+
     private Camera mainCamera;
     private LightController playerLight;
     private bool isBeingWatched;
+    private float initialZ;
+    private Vector3 lastPosition;
 
     protected override void Awake()
     {
         base.Awake();
         mainCamera = Camera.main;
+        initialZ = transform.position.z;
+        lastPosition = transform.position;
     }
 
     protected override void Start()
@@ -51,6 +61,62 @@ public class MariangulaAI : BaseEnemyAI
         CheckIfWatched();
 
         base.Update(); // Ejecuta la máquina de estados
+        
+        // Bloquear el eje Z para que no intente rodear obstáculos
+        Vector3 pos = transform.position;
+        pos.z = initialZ;
+        
+        // Prevenir que atraviese muros usando su radio y desiredVelocity
+        Vector3 desiredDir = agent.desiredVelocity;
+        desiredDir.y = 0; 
+        desiredDir.z = 0; // Solo predecimos sobre X para ser estrictamente 2.5D
+        
+        if (desiredDir.sqrMagnitude > 0.01f)
+        {
+            desiredDir.Normalize();
+            float radius = agent.radius > 0 ? agent.radius : 0.5f;
+            
+            // Lanzamos raycast desde el centro (asumiendo altura media de 1 metro)
+            Vector3 origin = transform.position + Vector3.up * 1f;
+            
+            if (Physics.Raycast(origin, desiredDir, out RaycastHit hit, radius + 0.1f))
+            {
+                // Ignorar colisiones con uno mismo (incluso si el collider está en un hijo) y con el jugador
+                if (!hit.collider.isTrigger && hit.collider.transform.root != transform.root && !hit.collider.CompareTag("Player"))
+                {
+                    // Nos estamos chocando con un muro. Detenemos la velocidad del agente.
+                    agent.velocity = Vector3.zero;
+                    
+                    // Empujarla hacia atrás exactamente al borde del collider para que no quede trabada a la mitad
+                    Vector3 safePos = transform.position;
+                    safePos.x = hit.point.x - (desiredDir.x * radius);
+                    pos = safePos; // Aplicamos a nuestra variable de posición que será forzada en Z
+                }
+            }
+        }
+
+        transform.position = pos;
+        agent.nextPosition = pos; // Sincronizar internamente el NavMeshAgent
+        lastPosition = pos;
+
+        // Voltear el sprite según la dirección del movimiento en X, y aplicar offset vertical
+        if (spriteRenderer != null)
+        {
+            Vector3 localPos = spriteRenderer.transform.localPosition;
+            spriteRenderer.transform.localPosition = new Vector3(localPos.x, visualOffsetY, -0.1f);
+
+            if (agent.velocity.sqrMagnitude > 0.1f)
+            {
+                if (agent.velocity.x > 0.1f)
+                {
+                    spriteRenderer.flipX = false;
+                }
+                else if (agent.velocity.x < -0.1f)
+                {
+                    spriteRenderer.flipX = true;
+                }
+            }
+        }
     }
 
     private void CheckIfWatched()
@@ -115,6 +181,11 @@ public class MariangulaAI : BaseEnemyAI
             // Petrificada
             agent.isStopped = true;
             agent.speed = petrifiedSpeed;
+            
+            if (animator != null)
+            {
+                animator.SetInteger("state", 0); // 0 = Idle
+            }
         }
         else
         {
@@ -122,9 +193,14 @@ public class MariangulaAI : BaseEnemyAI
             agent.isStopped = false;
             agent.speed = stalkingSpeed;
             
+            if (animator != null)
+            {
+                animator.SetInteger("state", 2); // 2 = Run
+            }
+            
             if (playerTransform != null)
             {
-                agent.SetDestination(playerTransform.position);
+                agent.SetDestination(new Vector3(playerTransform.position.x, playerTransform.position.y, initialZ));
             }
         }
     }

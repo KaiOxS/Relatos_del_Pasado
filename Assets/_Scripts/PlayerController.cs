@@ -74,6 +74,8 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Animator animator;
     public bool facingRight { get; private set; } = true;
+    [Tooltip("Ajuste vertical del sprite para alinear los pies con el suelo")]
+    public float visualOffsetY = 0.5f;
 
     private Vector3 velocity;
     private bool isGrounded;
@@ -143,8 +145,10 @@ public class PlayerController : MonoBehaviour
     {
         if (spriteRenderer == null) return;
 
-        // Asegurar que el sprite esté ligeramente al frente para evitar Z-fighting con el cubo
-        spriteRenderer.transform.localPosition = new Vector3(0, 0, -0.1f);
+        // Asegurar que el sprite esté ligeramente al frente para evitar Z-fighting con el cubo,
+        // pero aplicando un offset vertical (visualOffsetY) para alinear los pies.
+        Vector3 localPos = spriteRenderer.transform.localPosition;
+        spriteRenderer.transform.localPosition = new Vector3(localPos.x, visualOffsetY, -0.1f);
         
         // Forzar que el objeto del sprite siempre mire hacia adelante (plano 2.5D)
         spriteRenderer.transform.rotation = Quaternion.Euler(0, 0, 0);
