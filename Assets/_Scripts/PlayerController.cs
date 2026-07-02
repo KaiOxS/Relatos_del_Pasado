@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Fuerza horizontal al trepar el borde (salir del muro).")]
     public float ledgeClimbForceX = 4f;
     private bool isGrabbingLedge;
+    private bool isClimbingLedge;
     private int ledgeDirection; // 1 = muro a la derecha, -1 = muro a la izquierda
 
     [Header("Configuración 2.5D")]
@@ -203,9 +204,11 @@ public class PlayerController : MonoBehaviour
 
     private void CheckGrounded()
     {
-        // Posicionar la esfera exactamente en la base del CharacterController
-        // para asegurar que sobrepasa un poco el borde y toca el suelo real
-        Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - (controller.height / 2f), transform.position.z);
+        // Posicionar la esfera exactamente en la base absoluta del CharacterController (los zapatos)
+        // Usamos bounds.min.y que siempre es el fondo, sin importar dónde esté el pivote.
+        Vector3 spherePosition = new Vector3(transform.position.x, controller.bounds.min.y, transform.position.z);
+        
+        // Hacemos el radio de detección ligeramente más pequeño para evitar falsos positivos en paredes
         Collider[] colliders = Physics.OverlapSphere(spherePosition, controller.radius * 0.9f, groundLayer, QueryTriggerInteraction.Ignore);
         
         isGrounded = false;
@@ -259,25 +262,25 @@ public class PlayerController : MonoBehaviour
     private void CheckLedge()
     {
         // Si ya está en el suelo o en slide, no detectamos ledge
-        if (isGrounded || isSliding) return;
-
-        // Solo buscar ledge cuando el jugador está subiendo o en el pico del salto
-        // y no está ya agarrado
-        if (isGrabbingLedge) return;
+        if (isGrounded || isSliding || isGrabbingLedge) return;
 
         // La detección se hace en la dirección que el jugador mira
         int checkDir = facingRight ? 1 : -1;
-        Vector3 rayOrigin = transform.position; // Desde el centro del personaje
+        
+        // Obtenemos la parte más alta del collider (Cabeza) y un poco más abajo (Manos)
+        float topY = controller.bounds.max.y;
+        
+        Vector3 headOrigin = new Vector3(transform.position.x, topY, transform.position.z);
+        // Las manos están a una distancia fija debajo de la parte más alta del collider
+        Vector3 handsOrigin = new Vector3(transform.position.x, topY - ledgeCheckHeight, transform.position.z);
 
-        // Raycast 1: Horizontal a la altura del centro/pecho – detecta si hay una pared al lado
-        bool wallHit = Physics.Raycast(rayOrigin, Vector3.right * checkDir, ledgeCheckDistance, groundLayer);
-
-        // Raycast 2: Horizontal a la altura de la cabeza – no debe detectar pared si estamos en el borde superior
-        Vector3 headOrigin = rayOrigin + new Vector3(0, ledgeCheckHeight, 0);
+        // Raycast Cabeza: No debe detectar pared si estamos asomando la cabeza por encima del muro
         bool headHit = Physics.Raycast(headOrigin, Vector3.right * checkDir, ledgeCheckDistance, groundLayer);
+        // Raycast Manos: Sí debe detectar pared porque las manos chocan contra el muro
+        bool handsHit = Physics.Raycast(handsOrigin, Vector3.right * checkDir, ledgeCheckDistance, groundLayer);
 
-        // Si el pecho choca pero la cabeza no, estamos exactamente en el borde superior
-        if (wallHit && !headHit)
+        // Si las manos chocan pero la cabeza no, estamos exactamente en el borde superior
+        if (handsHit && !headHit)
         {
             // Solo agarrar si el jugador va hacia esa dirección o está cayendo
             float inputDir = input.MoveInput.x;
@@ -294,6 +297,8 @@ public class PlayerController : MonoBehaviour
 
     private void HandleLedgeGrab()
     {
+        if (isClimbingLedge) return;
+
         // Fijar el estado y detener movimiento
         currentState = PlayerState.LedgeGrabbing;
         velocity = Vector3.zero;
@@ -312,12 +317,42 @@ public class PlayerController : MonoBehaviour
         // Si el jugador presiona Jump, TREPA el borde
         if (jumpBufferTimer > 0f)
         {
-            isGrabbingLedge = false;
-            // Impulso hacia arriba y hacia el lado opuesto al muro para quedar encima
-            velocity.y = ledgeClimbForceY;
-            velocity.x = ledgeDirection * ledgeClimbForceX;
             jumpBufferTimer = 0f;
+            StartCoroutine(LedgeClimbRoutine());
         }
+    }
+
+    private System.Collections.IEnumerator LedgeClimbRoutine()
+    {
+        isClimbingLedge = true;
+        
+        // Tiempo que tarda en realizar la animación visual de trepar (ajustable)
+        float climbDuration = 0.35f; 
+        float elapsed = 0f;
+
+        Vector3 startPos = transform.position;
+        float distanceToLedge = (controller.bounds.max.y - ledgeCheckHeight) - controller.bounds.min.y;
+        Vector3 targetPos = startPos + new Vector3(ledgeDirection * (controller.radius + 0.6f), distanceToLedge + 0.3f, 0);
+
+        // Apagamos el CharacterController para que no pelee con nuestro movimiento matemático
+        controller.enabled = false;
+
+        // Movemos el personaje suavemente de un punto a otro mientras la animación se reproduce
+        while (elapsed < climbDuration)
+        {
+            transform.position = Vector3.Lerp(startPos, targetPos, (elapsed / climbDuration));
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Aseguramos que termine exactamente en el destino
+        transform.position = targetPos;
+        controller.enabled = true;
+        
+        // Devolvemos el control al jugador
+        isGrabbingLedge = false;
+        isClimbingLedge = false;
+        velocity = Vector3.zero;
     }
 
     private void HandleJumpBuffer()
