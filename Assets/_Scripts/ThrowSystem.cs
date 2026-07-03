@@ -14,6 +14,10 @@ public class ThrowSystem : MonoBehaviour
 
     private PlayerController player;
 
+    [Header("Inventario")]
+    public int stoneCount = 0;
+    public System.Action<int> OnStonesChanged;
+
     private void Awake()
     {
         input = FindObjectOfType<InputManager>();
@@ -21,18 +25,38 @@ public class ThrowSystem : MonoBehaviour
         if (trajectoryLine != null) trajectoryLine.enabled = false;
     }
 
+    private void Start()
+    {
+        OnStonesChanged?.Invoke(stoneCount);
+    }
+
     private void Update()
     {
-        if (input.AimHeld)
+        if (stoneCount > 0)
         {
-            DrawTrajectory();
+            if (input.AimHeld)
+            {
+                DrawTrajectory();
+            }
+            else if (input.ThrowTriggered)
+            {
+                ThrowObject();
+                input.ConsumeThrow();
+                if (trajectoryLine != null) trajectoryLine.enabled = false;
+            }
         }
-        else if (input.ThrowTriggered)
+        else
         {
-            ThrowObject();
-            input.ConsumeThrow();
+            // Si no tenemos piedras, no mostramos trayectoria ni permitimos lanzar
             if (trajectoryLine != null) trajectoryLine.enabled = false;
+            if (input.ThrowTriggered) input.ConsumeThrow(); // Consumir input de todos modos
         }
+    }
+
+    public void AddStones(int amount)
+    {
+        stoneCount += amount;
+        OnStonesChanged?.Invoke(stoneCount);
     }
 
     private Vector3 GetThrowDirection()
@@ -66,6 +90,9 @@ public class ThrowSystem : MonoBehaviour
     {
         if (projectilePrefab == null || throwPoint == null) return;
         
+        stoneCount--;
+        OnStonesChanged?.Invoke(stoneCount);
+
         GameObject proj = Instantiate(projectilePrefab, throwPoint.position, Quaternion.identity);
         Rigidbody rb = proj.GetComponent<Rigidbody>();
         

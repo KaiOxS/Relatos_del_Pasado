@@ -119,11 +119,15 @@ public class MariangulaAI : BaseEnemyAI
         }
     }
 
+    private float watchedGraceTimer = 0f;
+
     private void CheckIfWatched()
     {
         if (playerTransform == null) return;
         if (mainCamera == null) mainCamera = Camera.main ?? FindObjectOfType<Camera>();
         if (mainCamera == null) return;
+
+        bool currentlyWatched = false;
 
         // 1. ¿Está en la pantalla? (Con un margen de error del 20%)
         Vector3 viewportPoint = mainCamera.WorldToViewportPoint(transform.position);
@@ -147,25 +151,39 @@ public class MariangulaAI : BaseEnemyAI
             Vector3 targetCenter = transform.position + Vector3.up; // Apuntar al pecho de Mariangula
             Vector3 rayDir = (targetCenter - rayStart).normalized;
 
-            RaycastHit hit;
-            if (Physics.Raycast(rayStart, rayDir, out hit))
+            if (Physics.Raycast(rayStart, rayDir, out RaycastHit hit))
             {
-                if (hit.collider.gameObject == gameObject)
+                // Aquí estaba el bug: el collider del greybox está en un hijo, no en el gameObject raíz.
+                if (hit.collider.transform.root == transform.root)
                 {
-                    isBeingWatched = true;
-                    return;
+                    currentlyWatched = true;
                 }
             }
             else
             {
-                // Si el raycast no golpeó nada (tal vez olvidaste ponerle un collider a Mariangula),
-                // asumimos que sí la estás viendo para que el prototipo funcione.
-                isBeingWatched = true;
-                return;
+                // Si el raycast no golpeó nada asumimos que sí la estás viendo.
+                currentlyWatched = true;
             }
         }
 
-        isBeingWatched = false;
+        // Sistema anti-parpadeo: si la acabamos de ver, mantenemos el estado un instante
+        if (currentlyWatched)
+        {
+            isBeingWatched = true;
+            watchedGraceTimer = 0.2f; // Mantenerla vista por 0.2 segundos extra
+        }
+        else
+        {
+            if (watchedGraceTimer > 0)
+            {
+                watchedGraceTimer -= Time.deltaTime;
+                isBeingWatched = true;
+            }
+            else
+            {
+                isBeingWatched = false;
+            }
+        }
     }
 
     protected override void UpdatePatrol()

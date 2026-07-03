@@ -14,7 +14,10 @@ public abstract class BaseEnemyAI : MonoBehaviour
     public float patrolSpeed = 2f;
     public float chaseSpeed = 5f;
     public float stunDuration = 3f;
+    public float damagePercent = 0.3f;      // 30% de salud por ataque
+    public float damageCooldown = 1.5f;    // Segundos entre golpes
     protected float stunTimer;
+    private float lastDamageTime = -99f;
 
     protected virtual void Awake()
     {
@@ -108,7 +111,20 @@ public abstract class BaseEnemyAI : MonoBehaviour
     {
         if (other.CompareTag("Player") && currentState != AIState.Stunned)
         {
-            ExecuteInstaKill();
+            if (Time.time - lastDamageTime < damageCooldown) return;
+            lastDamageTime = Time.time;
+
+            // Buscar en el objeto y en todos sus padres
+            PlayerHealth health = other.GetComponentInParent<PlayerHealth>();
+            if (health == null) health = other.GetComponent<PlayerHealth>();
+
+            if (health != null)
+            {
+                float dmg = health.maxHealth * damagePercent;
+                health.TakeDamage(dmg);
+                // La muerte la gestiona PlayerHealth.OnPlayerDied → LevelManager.ShowGameOver()
+            }
+            // Si no hay PlayerHealth no hacemos nada (evita game over accidental)
         }
     }
 }
