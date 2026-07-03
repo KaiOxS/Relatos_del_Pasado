@@ -48,8 +48,17 @@ public class InputManager : MonoBehaviour
         playerControls.Player.Aim.canceled += ctx => { AimHeld = false; ThrowTriggered = true; };
     }
 
-    private void OnEnable() => playerControls.Enable();
-    private void OnDisable() => playerControls.Disable();
+private void OnEnable()
+{
+    if (playerControls != null)
+        playerControls.Enable();
+}
+
+private void OnDisable()
+{
+    if (playerControls != null)
+        playerControls.Disable();
+}
 
     public void ConsumeJump() => JumpTriggered = false;
     public void ConsumeSlide() => SlideTriggered = false;
