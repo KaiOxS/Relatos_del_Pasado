@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed = 3.5f;
     public float sprintSpeed = 7f;
     public float exhaustedSpeed = 1.5f;
+    public float crouchSpeed = 1.5f; // Velocidad al moverse agachado
     public float rotationSpeed = 15f;
 
     [Header("Salto y Gravedad (GDD)")]
@@ -65,6 +66,7 @@ public class PlayerController : MonoBehaviour
     public float ledgeClimbForceX = 4f;
     private bool isGrabbingLedge;
     private bool isClimbingLedge;
+    private float ledgeCooldownTimer;
     private int ledgeDirection; // 1 = muro a la derecha, -1 = muro a la izquierda
 
     [Header("Configuración 2.5D")]
@@ -113,6 +115,7 @@ public class PlayerController : MonoBehaviour
         if (Time.timeScale == 0f) return; // Detener todo movimiento si el juego está pausado
 
         if (slideCooldownTimer > 0) slideCooldownTimer -= Time.deltaTime;
+        if (ledgeCooldownTimer > 0) ledgeCooldownTimer -= Time.deltaTime;
 
         CheckGrounded();
         CheckWall();
@@ -261,8 +264,11 @@ public class PlayerController : MonoBehaviour
 
     private void CheckLedge()
     {
-        // Si ya está en el suelo o en slide, no detectamos ledge
-        if (isGrounded || isSliding || isGrabbingLedge) return;
+        // Si ya está en el suelo, en slide, agarrado, o en cooldown, no detectamos ledge
+        if (isGrounded || isSliding || isGrabbingLedge || ledgeCooldownTimer > 0f) return;
+        
+        // Tampoco intentar agarrarse si el jugador está presionando hacia abajo (S)
+        if (input.MoveInput.y < -0.1f) return;
 
         // La detección se hace en la dirección que el jugador mira
         int checkDir = facingRight ? 1 : -1;
@@ -303,14 +309,16 @@ public class PlayerController : MonoBehaviour
         currentState = PlayerState.LedgeGrabbing;
         velocity = Vector3.zero;
 
-        // Si el jugador suelta la dirección contraria al muro o presiona abajo, suelta el borde
+        // Si el jugador suelta la dirección contraria al muro o presiona abajo (S), suelta el borde
         bool releasingLedge = (ledgeDirection == 1 && input.MoveInput.x < -0.1f) ||
                               (ledgeDirection == -1 && input.MoveInput.x > 0.1f) ||
-                              input.CrouchHeld;
+                              input.CrouchHeld || 
+                              input.MoveInput.y < -0.1f;
 
         if (releasingLedge)
         {
             isGrabbingLedge = false;
+            ledgeCooldownTimer = 0.5f; // Evitar que se vuelva a agarrar al instante al caer
             return;
         }
 
@@ -401,11 +409,31 @@ public class PlayerController : MonoBehaviour
             }
 
             // Agacharse
-            if (input.CrouchHeld && isGrounded && !isSliding)
+            bool wantsToCrouch = input.CrouchHeld;
+
+            // Si estaba agachado y quiere soltar la tecla, primero revisamos si hay espacio arriba
+            if (isCrouching && !wantsToCrouch)
+            {
+                if (!CanStandUp())
+                {
+                    wantsToCrouch = true; // Lo obligamos a seguir agachado porque hay techo
+                }
+            }
+
+            if (wantsToCrouch && isGrounded && !isSliding)
             {
                 if (!isCrouching) StartCrouch();
                 
-                currentSpeed = 0f; // No se mueve agachado
+                // Si el jugador se mueve, aplicamos la velocidad de agachado
+                if (moveDirection.magnitude > 0.1f)
+                {
+                    currentSpeed = crouchSpeed;
+                }
+                else
+                {
+                    currentSpeed = 0f;
+                }
+                
                 currentState = PlayerState.Crouch;
             }
             else
@@ -499,9 +527,18 @@ public class PlayerController : MonoBehaviour
         if (slideTimer <= 0f)
         {
             isSliding = false;
-            // Restaurar altura y centro originales
-            controller.height = originalHeight;
-            controller.center = originalCenter;
+            
+            // Si al terminar de resbalar hay un techo, lo dejamos agachado
+            if (!CanStandUp())
+            {
+                StartCrouch();
+            }
+            else
+            {
+                // Restaurar altura y centro originales
+                controller.height = originalHeight;
+                controller.center = originalCenter;
+            }
         }
     }
 
@@ -517,6 +554,19 @@ public class PlayerController : MonoBehaviour
         isCrouching = false;
         controller.height = originalHeight;
         controller.center = originalCenter;
+    }
+
+    private bool CanStandUp()
+    {
+        // La distancia que necesitamos subir para estar de pie
+        float distance = originalHeight - controller.height;
+        
+        // Lanzamos una esfera invisible desde la cabeza actual hacia arriba
+        // Usamos un radio un poco menor al del jugador para que no choque con paredes laterales
+        Vector3 origin = new Vector3(transform.position.x, controller.bounds.max.y - (controller.radius * 0.9f), transform.position.z);
+        
+        // Si choca con algo de la capa GroundLayer, no podemos levantarnos
+        return !Physics.SphereCast(origin, controller.radius * 0.9f, Vector3.up, out RaycastHit hit, distance + 0.1f, groundLayer);
     }
 
     private void ApplyGravity()

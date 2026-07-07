@@ -26,10 +26,10 @@ public abstract class BaseEnemyAI : MonoBehaviour
         agent.updateUpAxis = false;
         agent.updateRotation = false; 
     }
-
+    
     protected virtual void Start()
     {
-        PlayerController player = FindObjectOfType<PlayerController>();
+        PlayerController player = FindAnyObjectByType<PlayerController>();
         if (player != null) playerTransform = player.transform;
 
         // Suscribirse al gestor de ruido

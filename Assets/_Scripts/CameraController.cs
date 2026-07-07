@@ -11,6 +11,12 @@ public class CameraController : MonoBehaviour
     public float lookAheadDistance = 3f;
     public float lookAheadSpeed = 2f;
     
+    [Header("Límites de Cámara (Topes)")]
+    [Tooltip("Activa esta opción para evitar que la cámara salga del mapa")]
+    public bool useBounds = false;
+    public Vector2 minBounds;
+    public Vector2 maxBounds;
+    
     private Vector3 velocity = Vector3.zero;
     private PlayerController player;
     private Vector3 currentLookAhead;
@@ -40,6 +46,13 @@ public class CameraController : MonoBehaviour
         }
 
         Vector3 targetPosition = target.position + offset + currentLookAhead;
+        
+        // Aplicar los topes si están activados
+        if (useBounds)
+        {
+            targetPosition.x = Mathf.Clamp(targetPosition.x, minBounds.x, maxBounds.x);
+            targetPosition.y = Mathf.Clamp(targetPosition.y, minBounds.y, maxBounds.y);
+        }
         
         // Mantener el seguimiento suave
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
