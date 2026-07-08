@@ -12,6 +12,10 @@ public class PlayerHealth : MonoBehaviour
 
     private bool isDead = false;
 
+    public AudioSource audioSource;
+
+    public AudioClip hurtClip;
+
     private void Awake()
     {
         currentHealth = maxHealth;
@@ -44,6 +48,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+        audioSource.PlayOneShot(hurtClip);
         if (isDead) return;
 
         currentHealth -= amount;

@@ -9,6 +9,12 @@ public class PlayerController : MonoBehaviour
     private InputManager input;
     private StaminaSystem staminaSystem;
 
+    public AudioSource audioSource;
+
+    public AudioClip hurtClip;
+
+
+
     [Header("Movimiento Base")]
     public float walkSpeed = 3.5f;
     public float sprintSpeed = 7f;
@@ -611,18 +617,20 @@ public class PlayerController : MonoBehaviour
             transform.position = pos;
         }
     }
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("enemyAttack"))
         {
+            audioSource.PlayOneShot(hurtClip);
             RestartGame();
         }
-    }
+    }*/
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.gameObject.CompareTag("enemyAttack"))
         {
+            
             RestartGame();
         }
     }

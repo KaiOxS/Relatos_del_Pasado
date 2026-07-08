@@ -19,8 +19,14 @@ public class MariangulaAI : BaseEnemyAI
     private Camera mainCamera;
     private LightController playerLight;
     private bool isBeingWatched;
+    private bool isAttacking = false;
     private float initialZ;
     private Vector3 lastPosition;
+
+    public AudioSource audioSource;
+
+    public AudioClip laughClip;
+
 
     protected override void Awake()
     {
@@ -205,15 +211,28 @@ public class MariangulaAI : BaseEnemyAI
                 animator.SetInteger("state", 0); // 0 = Idle
             }
         }
+        else if (isAttacking)
+        {
+            // Mientras ataca no se mueve
+            agent.isStopped = true;
+        }
         else
         {
+            // Verificamos si está lo suficientemente cerca para atacar
+            float distToPlayer = Vector3.Distance(transform.position, playerTransform.position);
+            if (distToPlayer <= attackRange)
+            {
+                StartCoroutine(AttackRoutine());
+                return;
+            }
+
             // Persiguiendo agresivamente
             agent.isStopped = false;
             agent.speed = stalkingSpeed;
             
             if (animator != null)
             {
-                animator.SetInteger("state", 2); // 2 = Run
+                if (animator.GetInteger("state") != 2) animator.SetInteger("state", 2); // 2 = Run
             }
             
             if (playerTransform != null)
@@ -227,5 +246,48 @@ public class MariangulaAI : BaseEnemyAI
     {
         // Reevaluar inmediatamente si la linterna cambia
         CheckIfWatched();
+    }
+
+    protected override void OnTriggerEnter(Collider other)
+    {
+        // Mariangula ya no hace daño por simple contacto físico.
+        // El daño se maneja exclusivamente en su rutina de ataque.
+    }
+
+    private System.Collections.IEnumerator AttackRoutine()
+    {
+        audioSource.PlayOneShot(laughClip);
+        isAttacking = true;
+        agent.isStopped = true;
+
+        // Disparamos la animación de ataque.
+        // Asumo que el valor 3 será el estado de "Ataque" en el Animator (state = 3).
+        if (animator != null) animator.SetInteger("state", 3);
+
+        // Esperamos medio segundo hasta el punto de impacto de la animación (ajústalo si la animación es más rápida/lenta)
+        yield return new WaitForSeconds(0.5f);
+
+        // Si el jugador sigue en el rango y Mariangula no ha sido aturdida, le hace daño.
+        if (currentState != AIState.Stunned && playerTransform != null)
+        {
+            float distToPlayer = Vector3.Distance(transform.position, playerTransform.position);
+            if (distToPlayer <= attackRange + 0.5f) // Le damos un pequeño margen extra para que no falle injustamente
+            {
+                PlayerHealth health = playerTransform.GetComponentInParent<PlayerHealth>();
+                if (health == null) health = playerTransform.GetComponent<PlayerHealth>();
+                
+                if (health != null)
+                {
+                    float dmg = health.maxHealth * damagePercent;
+                    health.TakeDamage(dmg);
+                }
+            }
+        }
+
+        // Esperamos a que termine el resto de la animación
+        yield return new WaitForSeconds(0.5f);
+
+        // Volvemos a la normalidad
+        isAttacking = false;
     }
 }

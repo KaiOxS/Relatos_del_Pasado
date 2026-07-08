@@ -107,7 +107,7 @@ public abstract class BaseEnemyAI : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && currentState != AIState.Stunned)
         {
