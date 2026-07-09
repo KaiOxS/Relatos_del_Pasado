@@ -12,6 +12,9 @@ public class SceneTransition : MonoBehaviour
     [Tooltip("Tiempo en segundos que tarda la pantalla en ponerse negra")]
     public float fadeDuration = 1.5f;
 
+    [Tooltip("(Opcional) Nombre del objeto vacío en la otra escena donde José debe aparecer. Si está vacío, aparecerá donde siempre.")]
+    public string targetSpawnPointName;
+
     private bool isTransitioning = false;
     private Image fadeImage;
 
@@ -20,8 +23,16 @@ public class SceneTransition : MonoBehaviour
         // Detectar si lo que entró a la cueva es el Jugador
         if (other.CompareTag("Player") && !isTransitioning)
         {
-            // Borramos el último punto de control para que no aparezca en el mapa viejo si muere
-            PlayerPrefs.DeleteKey("LastCheckpoint");
+            // Si especificaste un punto de destino, lo guardamos para que aparezca ahí. Si no, borramos el historial.
+            if (!string.IsNullOrEmpty(targetSpawnPointName))
+            {
+                PlayerPrefs.SetString("LastCheckpoint", targetSpawnPointName);
+                PlayerPrefs.Save();
+            }
+            else
+            {
+                PlayerPrefs.DeleteKey("LastCheckpoint");
+            }
             
             StartCoroutine(TransitionRoutine());
         }

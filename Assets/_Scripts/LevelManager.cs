@@ -10,6 +10,10 @@ public class LevelManager : MonoBehaviour
     [Header("UI Panels")]
     public GameObject gameOverPanel;
 
+    [Header("Debug / Pruebas")]
+    [Tooltip("Activa esto si quieres que el juego olvide el punto de control guardado y empiece desde el inicio siempre.")]
+    public bool resetSaveOnStart = false;
+
     private void Awake()
     {
         Instance = this;
@@ -17,7 +21,14 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        player = FindObjectOfType<PlayerController>();
+        player = FindAnyObjectByType<PlayerController>();
+
+        // Borrar guardado si estamos haciendo pruebas y queremos empezar desde 0
+        if (resetSaveOnStart)
+        {
+            PlayerPrefs.DeleteKey("LastCheckpoint");
+            PlayerPrefs.Save();
+        }
 
         // Si hay un checkpoint guardado, movemos al jugador ahí al iniciar la escena
         string checkpointName = PlayerPrefs.GetString("LastCheckpoint", "");
@@ -36,6 +47,10 @@ public class LevelManager : MonoBehaviour
                     player.transform.position = currentCheckpoint.position;
                     
                     if (cc != null) cc.enabled = true;
+                    
+                    // Asegurar que la cámara también haga teletransporte de inmediato
+                    CameraController cam = FindAnyObjectByType<CameraController>();
+                    if (cam != null) cam.SnapToTarget();
                 }
             }
         }

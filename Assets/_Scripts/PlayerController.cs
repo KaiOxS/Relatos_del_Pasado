@@ -97,8 +97,12 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
-        input = FindObjectOfType<InputManager>();
+        
+        // Seguro vital: Si el prefab se guardó con el controlador apagado por error (ej. durante un fundido a negro), forzar su encendido.
+        if (controller != null) controller.enabled = true;
+
         staminaSystem = GetComponent<StaminaSystem>();
+        input = FindObjectOfType<InputManager>();
 
         if (input == null) Debug.LogError("No se encontró InputManager en la escena.");
         originalHeight = controller.height;

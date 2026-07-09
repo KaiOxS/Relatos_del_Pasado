@@ -23,9 +23,23 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
+        // Buscar automáticamente a José si olvidamos asignarlo en el Inspector de este nuevo nivel
+        if (target == null)
+        {
+            PlayerController foundPlayer = FindAnyObjectByType<PlayerController>();
+            if (foundPlayer != null)
+            {
+                target = foundPlayer.transform;
+            }
+        }
+
         if (target != null)
         {
             player = target.GetComponent<PlayerController>();
+        }
+        else
+        {
+            Debug.LogWarning("¡La cámara no tiene a quién seguir! Asegúrate de que José esté en la escena.");
         }
     }
 
@@ -56,5 +70,22 @@ public class CameraController : MonoBehaviour
         
         // Mantener el seguimiento suave
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+    }
+
+    public void SnapToTarget()
+    {
+        if (target != null)
+        {
+            Vector3 targetPosition = target.position + offset;
+            
+            if (useBounds)
+            {
+                targetPosition.x = Mathf.Clamp(targetPosition.x, minBounds.x, maxBounds.x);
+                targetPosition.y = Mathf.Clamp(targetPosition.y, minBounds.y, maxBounds.y);
+            }
+            
+            transform.position = targetPosition;
+            velocity = Vector3.zero; // Detener cualquier inercia
+        }
     }
 }
