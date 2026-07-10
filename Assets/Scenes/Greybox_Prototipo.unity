@@ -691,6 +691,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -946,6 +951,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Plataforma_Salto (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
@@ -1220,6 +1230,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -1398,7 +1413,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 149232427}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gradas (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1637,6 +1652,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Plataforma_Salto (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
@@ -3369,6 +3389,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -3561,6 +3586,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Plataforma_Salto (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
@@ -3802,6 +3832,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Muro_Estrecho (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534920007413717868, guid: be784f5ea7356df4f9b3c4e68151ac3b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4202,6 +4237,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -4488,6 +4528,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Plataforma_Salto (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
@@ -5068,6 +5113,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Muro_Estrecho (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4534920007413717868, guid: be784f5ea7356df4f9b3c4e68151ac3b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5090,6 +5140,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Plataforma_Salto (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
@@ -5242,6 +5297,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Muro_Estrecho (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534920007413717868, guid: be784f5ea7356df4f9b3c4e68151ac3b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6155,7 +6215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
   currentCheckpoint: {fileID: 996200379}
   gameOverPanel: {fileID: 1581747354}
-  resetSaveOnStart: 0
+  resetSaveOnStart: 1
 --- !u!4 &829853919
 Transform:
   m_ObjectHideFlags: 0
@@ -6188,6 +6248,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Plataforma_Salto (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
@@ -6242,6 +6307,11 @@ PrefabInstance:
     - target: {fileID: 4236866508650148348, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8287251090116216470, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
+      propertyPath: m_LayerOverridePriority
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6560,6 +6630,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Plataforma_Salto (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
@@ -7264,6 +7339,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -7766,6 +7846,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -7950,6 +8035,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4063620816491617502, guid: e66d711b63021b34c8723d2fd75e2802,
         type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4063620816491617502, guid: e66d711b63021b34c8723d2fd75e2802,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -8035,6 +8125,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Plataforma_Salto (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
@@ -8135,6 +8230,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -8229,6 +8329,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Plataforma_Salto (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
@@ -9124,6 +9229,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -9273,6 +9383,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Muro_Estrecho (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534920007413717868, guid: be784f5ea7356df4f9b3c4e68151ac3b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9529,6 +9644,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -9745,7 +9865,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1562130983}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gradas (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9794,6 +9914,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Plataforma_Salto (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
@@ -10327,6 +10452,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -10609,6 +10739,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -10795,6 +10930,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Plataforma_Salto (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
@@ -11149,6 +11289,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Plataforma_Salto (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
@@ -12060,6 +12205,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -12433,6 +12583,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -12794,6 +12949,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Muro_Estrecho
       objectReference: {fileID: 0}
+    - target: {fileID: 4534920007413717868, guid: be784f5ea7356df4f9b3c4e68151ac3b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13038,6 +13198,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Plataforma_Salto (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3924674780339644169, guid: 09f8e0a8bb1da09498dde7f5a79c8a18,
         type: 3}
@@ -13575,6 +13740,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 545411307477782147, guid: 4c3eb790457f02448a3ffed8d4d80dd6,
+        type: 3}
+      propertyPath: solidLayerMask.m_Bits
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: 3983501982472429474, guid: 4c3eb790457f02448a3ffed8d4d80dd6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13629,6 +13799,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mariangula_Greybox
+      objectReference: {fileID: 0}
+    - target: {fileID: 6033170991591340850, guid: 4c3eb790457f02448a3ffed8d4d80dd6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8145218739093417021, guid: 4c3eb790457f02448a3ffed8d4d80dd6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

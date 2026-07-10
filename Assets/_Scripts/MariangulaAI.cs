@@ -10,6 +10,10 @@ public class MariangulaAI : BaseEnemyAI
     [Tooltip("Distancia a la que Mariangula intentará acercarse")]
     public float attackRange = 1.5f;
 
+    [Header("Colisiones 2.5D")]
+    [Tooltip("Capas contra las que Mariangula lanza raycasts (muros, suelo). NO incluir plataformas decorativas del fondo.")]
+    public LayerMask solidLayerMask = ~0; // Por defecto todo, asignar en Inspector
+
     [Header("Jumpscare Teleport")]
     public bool enableJumpscareTeleport = true;
     public float maxDistanceBeforeTeleport = 18f;
@@ -93,7 +97,7 @@ public class MariangulaAI : BaseEnemyAI
             // Lanzamos raycast desde el centro (asumiendo altura media de 1 metro)
             Vector3 origin = transform.position + Vector3.up * 1f;
             
-            if (Physics.Raycast(origin, desiredDir, out RaycastHit hit, radius + 0.1f))
+            if (Physics.Raycast(origin, desiredDir, out RaycastHit hit, radius + 0.1f, solidLayerMask))
             {
                 // Ignorar colisiones con uno mismo y con el jugador
                 if (!hit.collider.isTrigger && hit.collider.transform.root != transform.root && !hit.collider.CompareTag("Player"))
@@ -206,7 +210,7 @@ public class MariangulaAI : BaseEnemyAI
             Vector3 targetCenter = transform.position + Vector3.up; // Apuntar al pecho de Mariangula
             Vector3 rayDir = (targetCenter - rayStart).normalized;
 
-            if (Physics.Raycast(rayStart, rayDir, out RaycastHit hit))
+            if (Physics.Raycast(rayStart, rayDir, out RaycastHit hit, Mathf.Infinity, solidLayerMask))
             {
                 // Aquí estaba el bug: el collider del greybox está en un hijo, no en el gameObject raíz.
                 if (hit.collider.transform.root == transform.root)
@@ -377,29 +381,37 @@ public class MariangulaAI : BaseEnemyAI
         Vector3 newPos = playerTransform.position;
         newPos.x += directionX * teleportOffsetAhead;
         newPos.y += 1f; // Lo subimos un poco por si el suelo es irregular
-        newPos.z = initialZ;
+        newPos.z = initialZ; // FORZAR el plano 2.5D
 
-        // Verificamos si la nueva posición está sobre el NavMesh (con un radio grande de 10 metros para buscar el suelo más cercano)
+        // Buscamos la posición NavMesh más cercana con un radio PEQUEÑO (2m)
+        // para evitar que salte a plataformas del fondo que están en otro Z.
         NavMeshHit navHit;
-        if (NavMesh.SamplePosition(newPos, out navHit, 10f, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(newPos, out navHit, 2f, NavMesh.AllAreas))
         {
-            newPos = navHit.position; // Ajusta a la posición legal más cercana (suelo firme)
+            newPos = navHit.position;
+            newPos.z = initialZ; // SIEMPRE forzar Z después de SamplePosition
         }
         else
         {
-            // PLAN B: Si no hay NavMesh en 10 metros a la redonda (es un precipicio absoluto o vacío),
-            // la teletransportamos de forma segura exactamente donde está parado el jugador para evitar que caiga.
+            // PLAN B: Si no hay NavMesh cerca de donde queremos, usamos la posición del jugador.
             newPos = playerTransform.position;
             newPos.z = initialZ;
-            if (NavMesh.SamplePosition(newPos, out navHit, 5f, NavMesh.AllAreas))
+            if (NavMesh.SamplePosition(newPos, out navHit, 2f, NavMesh.AllAreas))
             {
                 newPos = navHit.position;
+                newPos.z = initialZ; // SIEMPRE forzar Z
             }
         }
 
+        // Última verificación: forzar Z antes del Warp
+        newPos.z = initialZ;
+        
         // Teletransportamos al NavMeshAgent de manera limpia
         agent.Warp(newPos);
         transform.position = newPos;
+        
+        // Sincronizar el agente al plano correcto
+        agent.nextPosition = newPos;
         
         // Hacemos que mire inmediatamente al jugador
         Vector3 localPos = spriteRenderer.transform.localPosition;
