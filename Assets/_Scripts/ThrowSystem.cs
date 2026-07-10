@@ -61,6 +61,26 @@ public class ThrowSystem : MonoBehaviour
 
     private Vector3 GetThrowDirection()
     {
+        // Si hay ratón, apuntamos hacia él para mayor precisión según el GDD
+        if (UnityEngine.InputSystem.Mouse.current != null)
+        {
+            Vector2 mousePos = UnityEngine.InputSystem.Mouse.current.position.ReadValue();
+            if (Camera.main != null)
+            {
+                // Calcular intersección del rayo del mouse con el plano 2.5D del jugador
+                Ray ray = Camera.main.ScreenPointToRay(mousePos);
+                Plane zPlane = new Plane(Vector3.forward, new Vector3(0, 0, transform.position.z));
+                if (zPlane.Raycast(ray, out float enter))
+                {
+                    Vector3 worldMousePos = ray.GetPoint(enter);
+                    Vector3 dir = (worldMousePos - throwPoint.position).normalized;
+                    dir.z = 0; // Fijo en 2.5D
+                    return dir;
+                }
+            }
+        }
+        
+        // Fallback por defecto si no hay mouse
         float directionX = (player != null && !player.facingRight) ? -1f : 1f;
         return new Vector3(directionX, 0.5f, 0f).normalized;
     }

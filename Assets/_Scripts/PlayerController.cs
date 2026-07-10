@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
     [Header("Tolerancia Táctil (Asistencias)")]
     public float coyoteTime = 0.15f;
     private float coyoteTimer;
+    private float wallCoyoteTimer;
+    private int lastWallDirection;
     public float jumpBufferTime = 0.15f;
     private float jumpBufferTimer;
 
@@ -217,25 +219,22 @@ public class PlayerController : MonoBehaviour
 
     private void CheckGrounded()
     {
-        // Posicionar la esfera exactamente en la base absoluta del CharacterController (los zapatos)
-        // Usamos bounds.min.y que siempre es el fondo, sin importar dónde esté el pivote.
         Vector3 spherePosition = new Vector3(transform.position.x, controller.bounds.min.y, transform.position.z);
-        
-        // Hacemos el radio de detección ligeramente más pequeño para evitar falsos positivos en paredes
         Collider[] colliders = Physics.OverlapSphere(spherePosition, controller.radius * 0.9f, groundLayer, QueryTriggerInteraction.Ignore);
         
-        isGrounded = false;
+        bool hitGround = false;
         foreach (Collider col in colliders)
         {
             if (col.gameObject != gameObject)
             {
-                isGrounded = true;
+                hitGround = true;
                 break;
             }
         }
 
-        if (isGrounded)
+        if (hitGround && velocity.y <= 0.1f)
         {
+            isGrounded = true;
             coyoteTimer = coyoteTime;
             if (velocity.y < 0)
             {
@@ -244,6 +243,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            isGrounded = false;
             coyoteTimer -= Time.deltaTime;
         }
     }
@@ -253,60 +253,69 @@ public class PlayerController : MonoBehaviour
         isWallSliding = false;
         wallDirection = 0;
 
-        // No chequear paredes si ya está en el suelo o agarrado a un borde
         if (isGrounded || isGrabbingLedge) return;
 
-        // Raycast para detectar muros a los lados (usa groundLayer para excluir al jugador)
         bool wallRight = Physics.Raycast(transform.position, Vector3.right, wallDistance, groundLayer);
         bool wallLeft = Physics.Raycast(transform.position, Vector3.left, wallDistance, groundLayer);
 
         if (wallRight || wallLeft)
         {
             wallDirection = wallRight ? 1 : -1;
+            lastWallDirection = wallDirection;
+            wallCoyoteTimer = coyoteTime;
 
-            // Si el jugador aprieta hacia la pared mientras cae, se desliza
             if (velocity.y < 0 && input.MoveInput.x == wallDirection)
             {
                 isWallSliding = true;
             }
         }
+        else
+        {
+            wallCoyoteTimer -= Time.deltaTime;
+        }
     }
 
     private void CheckLedge()
     {
-        // Si ya está en el suelo, en slide, agarrado, o en cooldown, no detectamos ledge
         if (isGrounded || isSliding || isGrabbingLedge || ledgeCooldownTimer > 0f) return;
-        
-        // Tampoco intentar agarrarse si el jugador está presionando hacia abajo (S)
         if (input.MoveInput.y < -0.1f) return;
 
-        // La detección se hace en la dirección que el jugador mira
         int checkDir = facingRight ? 1 : -1;
-        
-        // Obtenemos la parte más alta del collider (Cabeza) y un poco más abajo (Manos)
         float topY = controller.bounds.max.y;
         
         Vector3 headOrigin = new Vector3(transform.position.x, topY, transform.position.z);
-        // Las manos están a una distancia fija debajo de la parte más alta del collider
         Vector3 handsOrigin = new Vector3(transform.position.x, topY - ledgeCheckHeight, transform.position.z);
 
-        // Raycast Cabeza: No debe detectar pared si estamos asomando la cabeza por encima del muro
         bool headHit = Physics.Raycast(headOrigin, Vector3.right * checkDir, ledgeCheckDistance, groundLayer);
-        // Raycast Manos: Sí debe detectar pared porque las manos chocan contra el muro
         bool handsHit = Physics.Raycast(handsOrigin, Vector3.right * checkDir, ledgeCheckDistance, groundLayer);
+        bool aboveHeadHit = Physics.Raycast(headOrigin + Vector3.up * 0.2f, Vector3.right * checkDir, ledgeCheckDistance, groundLayer);
 
-        // Si las manos chocan pero la cabeza no, estamos exactamente en el borde superior
-        if (handsHit && !headHit)
+        if (handsHit && !headHit && !aboveHeadHit)
         {
-            // Solo agarrar si el jugador va hacia esa dirección o está cayendo
             float inputDir = input.MoveInput.x;
             bool movingTowardWall = (checkDir == 1 && inputDir > 0.1f) || (checkDir == -1 && inputDir < -0.1f);
 
             if (movingTowardWall || velocity.y < 1f)
             {
+                // Magnetismo: Ajustar la altura para que el agarre sea preciso al píxel
+                Vector3 rayStart = new Vector3(transform.position.x + (checkDir * ledgeCheckDistance * 0.8f), topY + 0.5f, transform.position.z);
+                if (Physics.Raycast(rayStart, Vector3.down, out RaycastHit ledgeHit, ledgeCheckHeight + 1.0f, groundLayer))
+                {
+                    float ledgeY = ledgeHit.point.y;
+                    float handsCurrentY = topY - ledgeCheckHeight;
+                    float offsetY = ledgeY - handsCurrentY;
+                    
+                    if (Mathf.Abs(offsetY) < 0.8f) // Tolerancia máxima
+                    {
+                        controller.enabled = false;
+                        transform.position += new Vector3(0, offsetY, 0);
+                        controller.enabled = true;
+                    }
+                }
+
                 isGrabbingLedge = true;
                 ledgeDirection = checkDir;
-                velocity = Vector3.zero; // Detener todo movimiento
+                velocity = Vector3.zero;
             }
         }
     }
@@ -483,9 +492,10 @@ public class PlayerController : MonoBehaviour
             {
                 PerformJump();
             }
-            else if (isWallSliding || (wallDirection != 0 && !isGrounded && !isGrabbingLedge))
+            else if (isWallSliding || (wallDirection != 0 && !isGrounded && !isGrabbingLedge) || wallCoyoteTimer > 0f)
             {
-                PerformWallJump();
+                int jumpDir = (wallDirection != 0) ? wallDirection : lastWallDirection;
+                PerformWallJump(jumpDir);
             }
         }
     }
@@ -497,14 +507,15 @@ public class PlayerController : MonoBehaviour
         coyoteTimer = 0f;
     }
 
-    private void PerformWallJump()
+    private void PerformWallJump(int jumpDir)
     {
         if (staminaSystem.HasEnoughStamina(staminaSystem.wallJumpDrain))
         {
             staminaSystem.ConsumeStamina(staminaSystem.wallJumpDrain);
             velocity.y = wallJumpForceY;
-            velocity.x = -wallDirection * wallJumpForceX; // Empuje separándose del muro
+            velocity.x = -jumpDir * wallJumpForceX;
             jumpBufferTimer = 0f;
+            wallCoyoteTimer = 0f;
             isWallSliding = false;
         }
     }
@@ -530,22 +541,30 @@ public class PlayerController : MonoBehaviour
     private void HandleSlide()
     {
         slideTimer -= Time.deltaTime;
-
-        // El personaje se desliza estrictamente en el eje X
         controller.Move(new Vector3(slideDirectionX, 0, 0) * (slideSpeed * Time.deltaTime));
+
+        // Permitir saltar durante el deslizamiento para mayor fluidez
+        if (jumpBufferTimer > 0f && coyoteTimer > 0f)
+        {
+            if (CanStandUp())
+            {
+                isSliding = false;
+                controller.height = originalHeight;
+                controller.center = originalCenter;
+                PerformJump();
+                return;
+            }
+        }
 
         if (slideTimer <= 0f)
         {
             isSliding = false;
-            
-            // Si al terminar de resbalar hay un techo, lo dejamos agachado
             if (!CanStandUp())
             {
                 StartCrouch();
             }
             else
             {
-                // Restaurar altura y centro originales
                 controller.height = originalHeight;
                 controller.center = originalCenter;
             }

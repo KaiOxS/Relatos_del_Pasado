@@ -178,13 +178,23 @@ public class MariangulaAI : BaseEnemyAI
         Vector3 viewportPoint = mainCamera.WorldToViewportPoint(transform.position);
         bool inCameraView = viewportPoint.x >= -0.2f && viewportPoint.x <= 1.2f && viewportPoint.z > 0;
 
-        // 2. ¿El jugador la está mirando? (Ignoramos la Y para que no importe si salta)
+        // 2. ¿El jugador la está mirando? (En 2.5D usamos facingRight)
         Vector3 dirToEnemy = (transform.position - playerTransform.position);
         dirToEnemy.y = 0;
         dirToEnemy.Normalize();
         
-        float lookDot = Vector3.Dot(playerTransform.forward, dirToEnemy);
-        bool playerLookingAtMe = lookDot > 0f; // > 0 significa que al menos está en su hemisferio frontal
+        PlayerController playerCtrl = playerTransform.GetComponent<PlayerController>();
+        bool playerLookingAtMe = false;
+        if (playerCtrl != null)
+        {
+            bool enemyIsToTheRight = (transform.position.x - playerTransform.position.x) > 0;
+            playerLookingAtMe = (playerCtrl.facingRight && enemyIsToTheRight) || (!playerCtrl.facingRight && !enemyIsToTheRight);
+        }
+        else
+        {
+            // Fallback por si acaso
+            playerLookingAtMe = Vector3.Dot(playerTransform.forward, dirToEnemy) > 0f;
+        }
 
         // 3. ¿La linterna está encendida?
         bool flashlightOn = playerLight != null && playerLight.isFlashlightOn;
@@ -351,15 +361,17 @@ public class MariangulaAI : BaseEnemyAI
     {
         if (playerTransform == null) return;
 
-        // Intentamos obtener la dirección en la que mira el jugador (PlayerController asume rotación o Input)
-        // En 2.5D, lo más seguro es usar el movimiento de cámara o la dirección del modelo
-        float directionX = playerTransform.localScale.x > 0 ? 1f : -1f; 
-        
-        // Si tienes la rotación configurada, podríamos usar playerTransform.right o forward.
-        // Pero para ser robustos en 2.5D, usamos el vector hacia donde mire el player.
-        // Asumiendo que el PlayerController voltea el sprite invirtiendo la escala X o rotando en Y:
-        if (playerTransform.forward.x > 0.1f) directionX = 1f;
-        else if (playerTransform.forward.x < -0.1f) directionX = -1f;
+        // Obtener dirección a partir de PlayerController (en 2.5D el forward 3D no suele rotar)
+        float directionX = 1f;
+        PlayerController playerCtrl = playerTransform.GetComponent<PlayerController>();
+        if (playerCtrl != null)
+        {
+            directionX = playerCtrl.facingRight ? 1f : -1f;
+        }
+        else
+        {
+            directionX = playerTransform.localScale.x > 0 ? 1f : -1f;
+        }
 
         // Calculamos la nueva posición X: Justo delante del jugador
         Vector3 newPos = playerTransform.position;

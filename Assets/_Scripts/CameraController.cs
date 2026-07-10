@@ -11,6 +11,7 @@ public class CameraController : MonoBehaviour
     public float lookAheadDistance = 3f;
     public float lookAheadSpeed = 2f;
     
+    
     [Header("Límites de Cámara (Topes)")]
     [Tooltip("Activa esta opción para evitar que la cámara salga del mapa")]
     public bool useBounds = false;
@@ -70,6 +71,8 @@ public class CameraController : MonoBehaviour
         
         // Mantener el seguimiento suave
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+
+    
     }
 
     public void SnapToTarget()
@@ -86,6 +89,7 @@ public class CameraController : MonoBehaviour
             
             transform.position = targetPosition;
             velocity = Vector3.zero; // Detener cualquier inercia
+
         }
     }
 }
