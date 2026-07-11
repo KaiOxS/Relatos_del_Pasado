@@ -9336,6 +9336,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 545411307477782147, guid: 4c3eb790457f02448a3ffed8d4d80dd6,
+        type: 3}
+      propertyPath: solidLayerMask.m_Bits
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: 3983501982472429474, guid: 4c3eb790457f02448a3ffed8d4d80dd6,
         type: 3}
       propertyPath: m_LocalPosition.x
