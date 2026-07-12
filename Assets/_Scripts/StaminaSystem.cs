@@ -18,6 +18,7 @@ public class StaminaSystem : MonoBehaviour
     public float regenDelay = 1.0f;     // Tiempo de espera sin consumir antes de regenerar
     
     private float regenTimer = 0f;
+    private float unlimitedStaminaTimer = 0f;
     public bool IsExhausted { get; private set; } // Estado de "Fatiga Extrema" del GDD
 
     // Eventos para UI y Audio
@@ -31,7 +32,17 @@ public class StaminaSystem : MonoBehaviour
 
     private void Update()
     {
-        HandleRegeneration();
+        if (unlimitedStaminaTimer > 0)
+        {
+            unlimitedStaminaTimer -= Time.deltaTime;
+            currentStamina = maxStamina;
+            IsExhausted = false;
+            OnStaminaChanged?.Invoke(1f);
+        }
+        else
+        {
+            HandleRegeneration();
+        }
     }
 
     private void HandleRegeneration()
@@ -56,8 +67,17 @@ public class StaminaSystem : MonoBehaviour
         }
     }
 
+    public void SetUnlimitedStamina(float duration)
+    {
+        unlimitedStaminaTimer = duration;
+        currentStamina = maxStamina;
+        IsExhausted = false;
+        OnStaminaChanged?.Invoke(1f);
+    }
+
     public void ConsumeStamina(float amount)
     {
+        if (unlimitedStaminaTimer > 0) return;
         if (IsExhausted) return;
 
         currentStamina -= amount;

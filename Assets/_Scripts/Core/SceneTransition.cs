@@ -15,6 +15,9 @@ public class SceneTransition : MonoBehaviour
     [Tooltip("(Opcional) Nombre del objeto vacío en la otra escena donde José debe aparecer. Si está vacío, aparecerá donde siempre.")]
     public string targetSpawnPointName;
 
+    [Tooltip("(Opcional) Objeto que el jugador debe tener para desbloquear esta puerta (ej. Velo, Tripas). Dejar vacío si siempre está abierta.")]
+    public string requiredItemToUnlock;
+
     private bool isTransitioning = false;
     private Image fadeImage;
 
@@ -23,6 +26,14 @@ public class SceneTransition : MonoBehaviour
         // Detectar si lo que entró a la cueva es el Jugador
         if (other.CompareTag("Player") && !isTransitioning)
         {
+            if (!string.IsNullOrEmpty(requiredItemToUnlock))
+            {
+                if (InventorySystem.Instance == null || !InventorySystem.Instance.HasItem(requiredItemToUnlock))
+                {
+                    Debug.Log("La puerta está bloqueada. Necesitas: " + requiredItemToUnlock);
+                    return; // Bloquea el paso
+                }
+            }
             // Si especificaste un punto de destino, lo guardamos para que aparezca ahí. Si no, borramos el historial.
             if (!string.IsNullOrEmpty(targetSpawnPointName))
             {

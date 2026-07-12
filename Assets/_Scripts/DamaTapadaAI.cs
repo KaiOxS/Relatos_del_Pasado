@@ -4,7 +4,7 @@ using UnityEngine.AI;
 public class DamaTapadaAI : BaseEnemyAI
 {
     [Header("Dama Tapada Settings")]
-    public float auraRadius = 1.2f;
+    public float auraRadius = 0.6f;
     public float auraLethalTime = 3f;
     
     [Header("Flying Settings")]
@@ -23,10 +23,17 @@ public class DamaTapadaAI : BaseEnemyAI
     private PlayerController playerCtrl;
     private Vector3 randomWanderTarget;
     private bool hasWanderTarget = false;
+    private Transform veloTransform;
     
     // Puntos de patrullaje simple
     public Transform[] patrolPoints;
     private int currentPatrolIndex;
+
+    private void OnValidate()
+    {
+        // Fuerza a que el Inspector actualice el valor si se quedó guardado uno muy grande
+        if (auraRadius > 2f) auraRadius = 0.6f;
+    }
 
     protected override void Start()
     {
@@ -34,6 +41,17 @@ public class DamaTapadaAI : BaseEnemyAI
         if (agent != null) agent.enabled = false; // Desactivar NavMeshAgent para volar libremente
         initialY = transform.position.y;
         playerCtrl = FindObjectOfType<PlayerController>();
+
+        // Buscar el velo en la escena
+        CollectibleItem[] items = FindObjectsOfType<CollectibleItem>();
+        foreach (var item in items)
+        {
+            if (item.itemType == InventorySystem.ItemType.Velo)
+            {
+                veloTransform = item.transform;
+                break;
+            }
+        }
     }
 
     protected override void UpdatePatrol()
@@ -41,6 +59,25 @@ public class DamaTapadaAI : BaseEnemyAI
         if (playerTransform == null) return;
         
         float currentDetectionRadius = detectionRadius;
+        float currentReactionTime = reactionTime;
+
+        // Escalar agresividad si el jugador está cerca del velo
+        if (veloTransform != null)
+        {
+            float distanceToVelo = Vector3.Distance(playerTransform.position, veloTransform.position);
+            if (distanceToVelo < 20f)
+            {
+                // Modo más agresivo: aumenta el rango de visión y reacciona al instante
+                currentDetectionRadius *= 1.8f;
+                currentReactionTime *= 0.2f; 
+            }
+            else
+            {
+                // Modo menos agresivo (relajada)
+                currentDetectionRadius *= 0.7f;
+                currentReactionTime *= 1.5f;
+            }
+        }
         
         // Modificar radio según estado del jugador
         if (playerCtrl != null)
@@ -62,7 +99,7 @@ public class DamaTapadaAI : BaseEnemyAI
         if (distanceToPlayer <= currentDetectionRadius)
         {
             currentReactionTimer += Time.deltaTime;
-            if (currentReactionTimer >= reactionTime)
+            if (currentReactionTimer >= currentReactionTime)
             {
                 currentState = AIState.Chase;
                 currentReactionTimer = 0f;
@@ -94,10 +131,10 @@ public class DamaTapadaAI : BaseEnemyAI
         }
         else
         {
-            // Volar por la escena aleatoriamente en el eje X si no hay puntos
+            // Volar por la escena aleatoriamente en el eje X si no hay puntos (cubriendo todo el nivel)
             if (!hasWanderTarget)
             {
-                float randomX = transform.position.x + Random.Range(-20f, 20f);
+                float randomX = transform.position.x + Random.Range(-40f, 40f);
                 randomWanderTarget = new Vector3(randomX, initialY, transform.position.z);
                 hasWanderTarget = true;
             }
@@ -208,6 +245,7 @@ public class DamaTapadaAI : BaseEnemyAI
         PlayerPrefs.DeleteKey("LastCheckpoint");
         PlayerPrefs.DeleteKey("PlayerHealth"); // Restaurar vida
         PlayerPrefs.DeleteKey("StoneCount"); // Restaurar inventario de piedras
+        SaveSystem.ClearInventory(); // Reiniciar consumibles
         PlayerPrefs.Save();
 
         if (GameManager.Instance != null)

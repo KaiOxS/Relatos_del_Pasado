@@ -5,7 +5,7 @@ public class ThrowSystem : MonoBehaviour
     [Header("Referencias")]
     public GameObject projectilePrefab;
     public Transform throwPoint;
-    public LineRenderer trajectoryLine;
+    private GameObject[] trajectoryDots;
     private InputManager input;
 
     [Header("Configuración de Lanzamiento")]
@@ -22,53 +22,82 @@ public class ThrowSystem : MonoBehaviour
     {
         input = FindObjectOfType<InputManager>();
         player = GetComponent<PlayerController>();
-        if (trajectoryLine != null) trajectoryLine.enabled = false;
 
-        if (PlayerPrefs.HasKey("StoneCount"))
+        // Crear los puntos para la trayectoria (línea punteada)
+        trajectoryDots = new GameObject[trajectorySegments];
+        Material dotMat = new Material(Shader.Find("Sprites/Default"));
+        dotMat.color = new Color(1f, 1f, 1f, 0.6f); // Blanco semi-transparente
+
+        for (int i = 0; i < trajectorySegments; i++)
         {
-            stoneCount = PlayerPrefs.GetInt("StoneCount");
-        }
-        else
-        {
-            PlayerPrefs.SetInt("StoneCount", stoneCount);
-            PlayerPrefs.Save();
+            GameObject dot = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            dot.transform.localScale = Vector3.one * 0.15f;
+            Destroy(dot.GetComponent<Collider>()); // Quitamos colisiones
+            dot.GetComponent<MeshRenderer>().material = dotMat;
+            dot.SetActive(false);
+            trajectoryDots[i] = dot;
         }
     }
 
     private void Start()
     {
-        OnStonesChanged?.Invoke(stoneCount);
+        OnStonesChanged?.Invoke(GetThrowableCount());
+    }
+
+    private int GetThrowableCount()
+    {
+        if (InventorySystem.Instance == null) return 0;
+        int count = 0;
+        if (InventorySystem.Instance.items.ContainsKey("Piedra")) count += InventorySystem.Instance.items["Piedra"];
+        if (InventorySystem.Instance.items.ContainsKey("BotellaVidrio")) count += InventorySystem.Instance.items["BotellaVidrio"];
+        if (InventorySystem.Instance.items.ContainsKey("PedazoVidrio")) count += InventorySystem.Instance.items["PedazoVidrio"];
+        return count;
     }
 
     private void Update()
     {
-        if (stoneCount > 0)
+        int count = GetThrowableCount();
+        if (count > 0)
         {
             if (input.AimHeld)
             {
                 DrawTrajectory();
             }
-            else if (input.ThrowTriggered)
+            else 
             {
-                ThrowObject();
-                input.ConsumeThrow();
-                if (trajectoryLine != null) trajectoryLine.enabled = false;
+                HideTrajectory();
+                if (input.ThrowTriggered)
+                {
+                    ThrowObject();
+                    input.ConsumeThrow();
+                }
             }
         }
         else
         {
             // Si no tenemos piedras, no mostramos trayectoria ni permitimos lanzar
-            if (trajectoryLine != null) trajectoryLine.enabled = false;
+            HideTrajectory();
             if (input.ThrowTriggered) input.ConsumeThrow(); // Consumir input de todos modos
+        }
+    }
+
+    private void HideTrajectory()
+    {
+        if (trajectoryDots == null) return;
+        for (int i = 0; i < trajectoryDots.Length; i++)
+        {
+            if (trajectoryDots[i] != null && trajectoryDots[i].activeSelf)
+            {
+                trajectoryDots[i].SetActive(false);
+            }
         }
     }
 
     public void AddStones(int amount)
     {
-        stoneCount += amount;
-        PlayerPrefs.SetInt("StoneCount", stoneCount);
-        PlayerPrefs.Save();
-        OnStonesChanged?.Invoke(stoneCount);
+        // Redirigir al sistema de inventario real (solo usado por legacy)
+        if (InventorySystem.Instance != null) InventorySystem.Instance.AddItem("Piedra", amount);
+        OnStonesChanged?.Invoke(GetThrowableCount());
     }
 
     private Vector3 GetThrowDirection()
@@ -99,12 +128,8 @@ public class ThrowSystem : MonoBehaviour
 
     private void DrawTrajectory()
     {
-        if (trajectoryLine == null || throwPoint == null) return;
+        if (throwPoint == null || trajectoryDots == null) return;
         
-        trajectoryLine.enabled = true;
-        trajectoryLine.positionCount = trajectorySegments;
-        
-        // Dirección basada en hacia dónde mira el jugador
         Vector3 throwDirection = GetThrowDirection();
         Vector3 initialVelocity = throwDirection * throwForce;
         
@@ -114,18 +139,22 @@ public class ThrowSystem : MonoBehaviour
             float timeOffset = timeStep * i;
             // Fórmula cinemática: p = p0 + v0*t + 0.5*g*t^2
             Vector3 progress = throwPoint.position + initialVelocity * timeOffset + Physics.gravity * 0.5f * timeOffset * timeOffset;
-            trajectoryLine.SetPosition(i, progress);
+            
+            trajectoryDots[i].transform.position = progress;
+            trajectoryDots[i].SetActive(true);
         }
     }
 
     private void ThrowObject()
     {
-        if (projectilePrefab == null || throwPoint == null) return;
+        if (projectilePrefab == null || throwPoint == null || InventorySystem.Instance == null) return;
         
-        stoneCount--;
-        PlayerPrefs.SetInt("StoneCount", stoneCount);
-        PlayerPrefs.Save();
-        OnStonesChanged?.Invoke(stoneCount);
+        // Consumir del inventario
+        if (InventorySystem.Instance.HasItem("Piedra")) InventorySystem.Instance.UseItem("Piedra");
+        else if (InventorySystem.Instance.HasItem("BotellaVidrio")) InventorySystem.Instance.UseItem("BotellaVidrio");
+        else if (InventorySystem.Instance.HasItem("PedazoVidrio")) InventorySystem.Instance.UseItem("PedazoVidrio");
+
+        OnStonesChanged?.Invoke(GetThrowableCount());
 
         GameObject proj = Instantiate(projectilePrefab, throwPoint.position, Quaternion.identity);
         Rigidbody rb = proj.GetComponent<Rigidbody>();

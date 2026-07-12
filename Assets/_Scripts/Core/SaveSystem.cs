@@ -26,7 +26,19 @@ public static class SaveSystem
         PlayerPrefs.DeleteKey("LastCheckpoint");
         PlayerPrefs.DeleteKey("PlayerHealth");
         PlayerPrefs.DeleteKey("StoneCount");
+        
+        ClearInventory();
+
         PlayerPrefs.Save();
         Debug.Log("Progreso borrado.");
+    }
+
+    public static void ClearInventory()
+    {
+        foreach (string name in System.Enum.GetNames(typeof(InventorySystem.ItemType)))
+        {
+            PlayerPrefs.DeleteKey("Inv_" + name);
+        }
+        PlayerPrefs.Save();
     }
 }
