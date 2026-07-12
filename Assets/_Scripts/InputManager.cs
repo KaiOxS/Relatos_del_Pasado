@@ -5,7 +5,9 @@ public class InputManager : MonoBehaviour
 {
     private PlayerControls playerControls;
 
-    public Vector2 MoveInput { get; private set; }
+    public bool ControlsInverted { get; set; } = false;
+    private Vector2 rawMoveInput;
+    public Vector2 MoveInput => ControlsInverted ? -rawMoveInput : rawMoveInput;
     public bool JumpTriggered { get; private set; }
     public bool JumpHeld { get; private set; }
     public bool SprintHeld { get; private set; }
@@ -23,8 +25,8 @@ public class InputManager : MonoBehaviour
         playerControls = new PlayerControls();
 
         // Movimiento
-        playerControls.Player.Move.performed += ctx => MoveInput = ctx.ReadValue<Vector2>();
-        playerControls.Player.Move.canceled += ctx => MoveInput = Vector2.zero;
+        playerControls.Player.Move.performed += ctx => rawMoveInput = ctx.ReadValue<Vector2>();
+        playerControls.Player.Move.canceled += ctx => rawMoveInput = Vector2.zero;
 
         // Salto
         playerControls.Player.Jump.started += ctx => { JumpTriggered = true; JumpHeld = true; };

@@ -51,7 +51,8 @@ public class DamaTapadaAI : BaseEnemyAI
             if (!playerInAura)
             {
                 playerInAura = true;
-                // TODO: Enviar evento al HUD/Player para invertir controles y nublar visión
+                InputManager im = FindObjectOfType<InputManager>();
+                if (im != null) im.ControlsInverted = true;
                 Debug.Log("Jugador entró en el aura de la Dama Tapada. Controles invertidos.");
             }
 
@@ -68,9 +69,28 @@ public class DamaTapadaAI : BaseEnemyAI
             {
                 playerInAura = false;
                 timeInAura = 0f;
-                // TODO: Enviar evento para restaurar controles
+                InputManager im = FindObjectOfType<InputManager>();
+                if (im != null) im.ControlsInverted = false;
                 Debug.Log("Jugador salió del aura.");
             }
+        }
+    }
+
+    protected override void ExecuteInstaKill()
+    {
+        Debug.Log("Insta-Kill ejecutado por Dama Tapada. Regresando al principio del nivel.");
+        PlayerPrefs.DeleteKey("LastCheckpoint");
+        PlayerPrefs.DeleteKey("PlayerHealth"); // Restaurar vida
+        PlayerPrefs.DeleteKey("StoneCount"); // Restaurar inventario de piedras
+        PlayerPrefs.Save();
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.LoadSceneAsync("Greybox_Prototipo");
+        }
+        else
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Greybox_Prototipo");
         }
     }
     

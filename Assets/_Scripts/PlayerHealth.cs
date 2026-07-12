@@ -18,7 +18,22 @@ public class PlayerHealth : MonoBehaviour
 
     private void Awake()
     {
-        currentHealth = maxHealth;
+        if (PlayerPrefs.HasKey("PlayerHealth"))
+        {
+            currentHealth = PlayerPrefs.GetFloat("PlayerHealth");
+            if (currentHealth <= 0f)
+            {
+                currentHealth = maxHealth;
+                PlayerPrefs.SetFloat("PlayerHealth", currentHealth);
+                PlayerPrefs.Save();
+            }
+        }
+        else
+        {
+            currentHealth = maxHealth;
+            PlayerPrefs.SetFloat("PlayerHealth", currentHealth);
+            PlayerPrefs.Save();
+        }
     }
 
     private void Start()
@@ -56,6 +71,8 @@ public class PlayerHealth : MonoBehaviour
 
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        PlayerPrefs.SetFloat("PlayerHealth", currentHealth);
+        PlayerPrefs.Save();
         OnHealthChanged?.Invoke(currentHealth / maxHealth);
 
         if (currentHealth <= 0)
@@ -69,6 +86,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (isDead) return;
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+        PlayerPrefs.SetFloat("PlayerHealth", currentHealth);
+        PlayerPrefs.Save();
         OnHealthChanged?.Invoke(currentHealth / maxHealth);
     }
 
@@ -76,6 +95,8 @@ public class PlayerHealth : MonoBehaviour
     {
         isDead = false;
         currentHealth = maxHealth;
+        PlayerPrefs.SetFloat("PlayerHealth", currentHealth);
+        PlayerPrefs.Save();
         OnHealthChanged?.Invoke(1f);
     }
 }

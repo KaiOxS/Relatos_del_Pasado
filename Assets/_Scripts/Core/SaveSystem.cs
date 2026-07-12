@@ -23,6 +23,9 @@ public static class SaveSystem
     public static void ClearProgress()
     {
         PlayerPrefs.DeleteKey(LAST_SCENE_KEY);
+        PlayerPrefs.DeleteKey("LastCheckpoint");
+        PlayerPrefs.DeleteKey("PlayerHealth");
+        PlayerPrefs.DeleteKey("StoneCount");
         PlayerPrefs.Save();
         Debug.Log("Progreso borrado.");
     }

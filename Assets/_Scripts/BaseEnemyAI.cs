@@ -94,7 +94,7 @@ public abstract class BaseEnemyAI : MonoBehaviour
     }
 
     // El collider de Narrow Phase usará esto al tocar al jugador
-    protected void ExecuteInstaKill()
+    protected virtual void ExecuteInstaKill()
     {
         Debug.Log("Insta-Kill ejecutado por " + gameObject.name);
         if (LevelManager.Instance != null)

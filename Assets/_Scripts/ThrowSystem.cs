@@ -23,6 +23,16 @@ public class ThrowSystem : MonoBehaviour
         input = FindObjectOfType<InputManager>();
         player = GetComponent<PlayerController>();
         if (trajectoryLine != null) trajectoryLine.enabled = false;
+
+        if (PlayerPrefs.HasKey("StoneCount"))
+        {
+            stoneCount = PlayerPrefs.GetInt("StoneCount");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("StoneCount", stoneCount);
+            PlayerPrefs.Save();
+        }
     }
 
     private void Start()
@@ -56,6 +66,8 @@ public class ThrowSystem : MonoBehaviour
     public void AddStones(int amount)
     {
         stoneCount += amount;
+        PlayerPrefs.SetInt("StoneCount", stoneCount);
+        PlayerPrefs.Save();
         OnStonesChanged?.Invoke(stoneCount);
     }
 
@@ -111,6 +123,8 @@ public class ThrowSystem : MonoBehaviour
         if (projectilePrefab == null || throwPoint == null) return;
         
         stoneCount--;
+        PlayerPrefs.SetInt("StoneCount", stoneCount);
+        PlayerPrefs.Save();
         OnStonesChanged?.Invoke(stoneCount);
 
         GameObject proj = Instantiate(projectilePrefab, throwPoint.position, Quaternion.identity);
