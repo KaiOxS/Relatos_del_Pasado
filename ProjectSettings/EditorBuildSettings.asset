@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Nivel1_Subterraneo.unity
     guid: b0435e257c352c8459a7b60873bac9e2
+  - enabled: 1
+    path: Assets/Scenes/Cinematica_Intro.unity
+    guid: da044977426bd4a44a8f99bc4465f2a2
   m_configObjects: {}

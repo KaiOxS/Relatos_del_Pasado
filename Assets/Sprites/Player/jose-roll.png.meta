@@ -1,0 +1,780 @@
+fileFormatVersion: 2
+guid: 65bde530615b84c45991e3c572dd6028
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5812183079179264402
+    second: jose-roll_0
+  - first:
+      213: -3455043565806384978
+    second: jose-roll_1
+  - first:
+      213: 4532661328171221849
+    second: jose-roll_2
+  - first:
+      213: 5203811581119054149
+    second: jose-roll_3
+  - first:
+      213: 7312182512047429885
+    second: jose-roll_4
+  - first:
+      213: 8222389560355519244
+    second: jose-roll_5
+  - first:
+      213: -2862897845625907351
+    second: jose-roll_6
+  - first:
+      213: 2037496941292003679
+    second: jose-roll_7
+  - first:
+      213: -1731500318180516115
+    second: jose-roll_8
+  - first:
+      213: -3600405203174061321
+    second: jose-roll_9
+  - first:
+      213: 8079311647143302903
+    second: jose-roll_10
+  - first:
+      213: -1384528441765008728
+    second: jose-roll_11
+  - first:
+      213: 4438769063662637257
+    second: jose-roll_12
+  - first:
+      213: 3846002993520800132
+    second: jose-roll_13
+  - first:
+      213: -4147393476770702748
+    second: jose-roll_14
+  - first:
+      213: 9002066875140682827
+    second: jose-roll_15
+  - first:
+      213: -3755910023674750910
+    second: jose-roll_16
+  - first:
+      213: 1681396684754802463
+    second: jose-roll_17
+  - first:
+      213: 8642897396110323890
+    second: jose-roll_18
+  - first:
+      213: -6321687224394466655
+    second: jose-roll_19
+  - first:
+      213: 6417373629186797091
+    second: jose-roll_20
+  - first:
+      213: 1853022820843376045
+    second: jose-roll_21
+  - first:
+      213: 4654470136519226615
+    second: jose-roll_22
+  - first:
+      213: -282962831605783998
+    second: jose-roll_23
+  - first:
+      213: 1148728376120267904
+    second: jose-roll_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 120
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: jose-roll_0
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 894
+        width: 119
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 291240c57b509a050800000000000000
+      internalID: 5812183079179264402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-roll_1
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 894
+        width: 124
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea88c98be283d00d0800000000000000
+      internalID: -3455043565806384978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-roll_2
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 893
+        width: 150
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 953cbc0867f37ee30800000000000000
+      internalID: 4532661328171221849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-roll_3
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 906
+        width: 168
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5414aa2ef07a73840800000000000000
+      internalID: 5203811581119054149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-roll_4
+      rect:
+        serializedVersion: 2
+        x: 1026
+        y: 901
+        width: 169
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df8196bc0471a7560800000000000000
+      internalID: 7312182512047429885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-roll_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 683
+        width: 162
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0bfed5bdbbcb1270800000000000000
+      internalID: 8222389560355519244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-roll_6
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 690
+        width: 131
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9679c33e391f448d0800000000000000
+      internalID: -2862897845625907351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-roll_7
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 680
+        width: 138
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f51a7a84ca4a64c10800000000000000
+      internalID: 2037496941292003679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-roll_8
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 676
+        width: 147
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: deedf5e62a978f7e0800000000000000
+      internalID: -1731500318180516115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-roll_9
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 680
+        width: 142
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fa87512b8ac80ec0800000000000000
+      internalID: -3600405203174061321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-roll_10
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 456
+        width: 130
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f617a5132b7f1070800000000000000
+      internalID: 8079311647143302903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-roll_11
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 454
+        width: 130
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8aaeb2fb7ba29cce0800000000000000
+      internalID: -1384528441765008728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-roll_12
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 456
+        width: 126
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c0da9f12fca99d30800000000000000
+      internalID: 4438769063662637257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-roll_13
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 455
+        width: 113
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48175e9785fbf5530800000000000000
+      internalID: 3846002993520800132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-roll_14
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 455
+        width: 100
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46a5f415b9f7176c0800000000000000
+      internalID: -4147393476770702748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-roll_15
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 232
+        width: 99
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b443211c024cdec70800000000000000
+      internalID: 9002066875140682827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-roll_16
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 231
+        width: 92
+        height: 191
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 248998eabb350ebc0800000000000000
+      internalID: -3755910023674750910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-roll_17
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 231
+        width: 83
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1754595065855710800000000000000
+      internalID: 1681396684754802463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-roll_18
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 231
+        width: 86
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b0fd45c36db1f770800000000000000
+      internalID: 8642897396110323890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-roll_19
+      rect:
+        serializedVersion: 2
+        x: 1107
+        y: 231
+        width: 86
+        height: 207
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1aab7d096fad448a0800000000000000
+      internalID: -6321687224394466655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-roll_20
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 9
+        width: 87
+        height: 209
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32e63a6a0571f0950800000000000000
+      internalID: 6417373629186797091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-roll_21
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 9
+        width: 85
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dadcf05107247b910800000000000000
+      internalID: 1853022820843376045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-roll_22
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 9
+        width: 82
+        height: 212
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f474e0cdeff79040800000000000000
+      internalID: 4654470136519226615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-roll_23
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 9
+        width: 78
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 242af79cdc6b21cf0800000000000000
+      internalID: -282962831605783998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-roll_24
+      rect:
+        serializedVersion: 2
+        x: 1109
+        y: 9
+        width: 77
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0845f023f5a11ff00800000000000000
+      internalID: 1148728376120267904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      jose-roll_0: 5812183079179264402
+      jose-roll_1: -3455043565806384978
+      jose-roll_10: 8079311647143302903
+      jose-roll_11: -1384528441765008728
+      jose-roll_12: 4438769063662637257
+      jose-roll_13: 3846002993520800132
+      jose-roll_14: -4147393476770702748
+      jose-roll_15: 9002066875140682827
+      jose-roll_16: -3755910023674750910
+      jose-roll_17: 1681396684754802463
+      jose-roll_18: 8642897396110323890
+      jose-roll_19: -6321687224394466655
+      jose-roll_2: 4532661328171221849
+      jose-roll_20: 6417373629186797091
+      jose-roll_21: 1853022820843376045
+      jose-roll_22: 4654470136519226615
+      jose-roll_23: -282962831605783998
+      jose-roll_24: 1148728376120267904
+      jose-roll_3: 5203811581119054149
+      jose-roll_4: 7312182512047429885
+      jose-roll_5: 8222389560355519244
+      jose-roll_6: -2862897845625907351
+      jose-roll_7: 2037496941292003679
+      jose-roll_8: -1731500318180516115
+      jose-roll_9: -3600405203174061321
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

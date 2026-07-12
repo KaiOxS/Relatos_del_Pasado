@@ -1,0 +1,780 @@
+fileFormatVersion: 2
+guid: 9ad39ac9872a53348947789d2f4334e5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4528690940919136972
+    second: jose-damage_0
+  - first:
+      213: 8263431773615267954
+    second: jose-damage_1
+  - first:
+      213: 6693468121728912686
+    second: jose-damage_2
+  - first:
+      213: 1494641714796160568
+    second: jose-damage_3
+  - first:
+      213: 3827773608218203326
+    second: jose-damage_4
+  - first:
+      213: -282611892981996729
+    second: jose-damage_5
+  - first:
+      213: -5316917414355863350
+    second: jose-damage_6
+  - first:
+      213: 2861556123864531298
+    second: jose-damage_7
+  - first:
+      213: -1928842835440333763
+    second: jose-damage_8
+  - first:
+      213: -4384770119464876867
+    second: jose-damage_9
+  - first:
+      213: -4632933374879325862
+    second: jose-damage_10
+  - first:
+      213: 7335435054548657726
+    second: jose-damage_11
+  - first:
+      213: -3205393350779613093
+    second: jose-damage_12
+  - first:
+      213: -5619068642693190992
+    second: jose-damage_13
+  - first:
+      213: -88549027986921524
+    second: jose-damage_14
+  - first:
+      213: 6627711678827903473
+    second: jose-damage_15
+  - first:
+      213: 5955422755095258345
+    second: jose-damage_16
+  - first:
+      213: 1998273317929213094
+    second: jose-damage_17
+  - first:
+      213: -6047308420734168294
+    second: jose-damage_18
+  - first:
+      213: -1281152858252103335
+    second: jose-damage_19
+  - first:
+      213: 2481151720341475492
+    second: jose-damage_20
+  - first:
+      213: -3899867895002182897
+    second: jose-damage_21
+  - first:
+      213: 732090161461939911
+    second: jose-damage_22
+  - first:
+      213: -6291828872334233964
+    second: jose-damage_23
+  - first:
+      213: 8031567626750827587
+    second: jose-damage_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 120
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: jose-damage_0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 796
+        width: 66
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc2c30faa6429de30800000000000000
+      internalID: 4528690940919136972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-damage_1
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 796
+        width: 64
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 270a304aa6b9da270800000000000000
+      internalID: 8263431773615267954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-damage_2
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 796
+        width: 66
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2d8d0f0bc9f3ec50800000000000000
+      internalID: 6693468121728912686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-damage_3
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 796
+        width: 71
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 836e7ec78b80eb410800000000000000
+      internalID: 1494641714796160568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-damage_4
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 797
+        width: 74
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb41676f0dbfe1530800000000000000
+      internalID: 3827773608218203326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-damage_5
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 599
+        width: 74
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 743e18d0bf5f31cf0800000000000000
+      internalID: -282611892981996729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-damage_6
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 599
+        width: 74
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac8fa3928c38636b0800000000000000
+      internalID: -5316917414355863350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-damage_7
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 599
+        width: 87
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2610acb222a46b720800000000000000
+      internalID: 2861556123864531298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-damage_8
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 600
+        width: 101
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3c850e19af5b35e0800000000000000
+      internalID: -1928842835440333763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-damage_9
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 601
+        width: 100
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db48c8fceca2623c0800000000000000
+      internalID: -4384770119464876867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-damage_10
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 402
+        width: 93
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a51244254a384bfb0800000000000000
+      internalID: -4632933374879325862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-damage_11
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 400
+        width: 89
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e36225b3153bcc560800000000000000
+      internalID: 7335435054548657726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-damage_12
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 400
+        width: 89
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b50d169fab72483d0800000000000000
+      internalID: -3205393350779613093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-damage_13
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 399
+        width: 86
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ba6cbf27de0502b0800000000000000
+      internalID: -5619068642693190992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-damage_14
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 399
+        width: 81
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc722a1d02965cef0800000000000000
+      internalID: -88549027986921524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-damage_15
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 201
+        width: 79
+        height: 177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f9be3228ac5afb50800000000000000
+      internalID: 6627711678827903473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-damage_16
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 201
+        width: 74
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e42bbc4179e5a250800000000000000
+      internalID: 5955422755095258345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-damage_17
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 201
+        width: 64
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6acdf4fcefa4bbb10800000000000000
+      internalID: 1998273317929213094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-damage_18
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 201
+        width: 60
+        height: 193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1359e60805a31ca0800000000000000
+      internalID: -6047308420734168294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-damage_19
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 201
+        width: 59
+        height: 193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95138e4634e683ee0800000000000000
+      internalID: -1281152858252103335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-damage_20
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 3
+        width: 59
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a09dcc0852de6220800000000000000
+      internalID: 2481151720341475492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-damage_21
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 3
+        width: 58
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0bc177dfc2e0e9c0800000000000000
+      internalID: -3899867895002182897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-damage_22
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 3
+        width: 58
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ce4f718f18e82a00800000000000000
+      internalID: 732090161461939911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-damage_23
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 3
+        width: 60
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49ea8f4e9feeea8a0800000000000000
+      internalID: -6291828872334233964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-damage_24
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 3
+        width: 60
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34c9206143cd57f60800000000000000
+      internalID: 8031567626750827587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      jose-damage_0: 4528690940919136972
+      jose-damage_1: 8263431773615267954
+      jose-damage_10: -4632933374879325862
+      jose-damage_11: 7335435054548657726
+      jose-damage_12: -3205393350779613093
+      jose-damage_13: -5619068642693190992
+      jose-damage_14: -88549027986921524
+      jose-damage_15: 6627711678827903473
+      jose-damage_16: 5955422755095258345
+      jose-damage_17: 1998273317929213094
+      jose-damage_18: -6047308420734168294
+      jose-damage_19: -1281152858252103335
+      jose-damage_2: 6693468121728912686
+      jose-damage_20: 2481151720341475492
+      jose-damage_21: -3899867895002182897
+      jose-damage_22: 732090161461939911
+      jose-damage_23: -6291828872334233964
+      jose-damage_24: 8031567626750827587
+      jose-damage_3: 1494641714796160568
+      jose-damage_4: 3827773608218203326
+      jose-damage_5: -282611892981996729
+      jose-damage_6: -5316917414355863350
+      jose-damage_7: 2861556123864531298
+      jose-damage_8: -1928842835440333763
+      jose-damage_9: -4384770119464876867
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

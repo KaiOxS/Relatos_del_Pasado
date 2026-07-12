@@ -51,6 +51,9 @@ public class PlayerHealth : MonoBehaviour
         audioSource.PlayOneShot(hurtClip);
         if (isDead) return;
 
+        PlayerController pc = GetComponent<PlayerController>();
+        if (pc != null) pc.TriggerDamageAnimation();
+
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         OnHealthChanged?.Invoke(currentHealth / maxHealth);

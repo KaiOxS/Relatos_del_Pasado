@@ -1,0 +1,780 @@
+fileFormatVersion: 2
+guid: 2eeb687df77b8164daa1cf76a9cf1107
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5515468901661882192
+    second: jose-crouchwalk_0
+  - first:
+      213: 2281518066082333947
+    second: jose-crouchwalk_1
+  - first:
+      213: 2777659733452626278
+    second: jose-crouchwalk_2
+  - first:
+      213: -322637428241562973
+    second: jose-crouchwalk_3
+  - first:
+      213: 4868638906380674117
+    second: jose-crouchwalk_4
+  - first:
+      213: 3468611578617976367
+    second: jose-crouchwalk_5
+  - first:
+      213: 1714997248582179941
+    second: jose-crouchwalk_6
+  - first:
+      213: 4441246350295453189
+    second: jose-crouchwalk_7
+  - first:
+      213: -3014451497185381564
+    second: jose-crouchwalk_8
+  - first:
+      213: 2461916763143837212
+    second: jose-crouchwalk_9
+  - first:
+      213: -4697348103156125901
+    second: jose-crouchwalk_10
+  - first:
+      213: 2558185411454990602
+    second: jose-crouchwalk_11
+  - first:
+      213: -77953917665050351
+    second: jose-crouchwalk_12
+  - first:
+      213: 5070640530518199802
+    second: jose-crouchwalk_13
+  - first:
+      213: 1056568431426692434
+    second: jose-crouchwalk_14
+  - first:
+      213: 3054548249325861408
+    second: jose-crouchwalk_15
+  - first:
+      213: 3905398214126476709
+    second: jose-crouchwalk_16
+  - first:
+      213: 1408712092933866849
+    second: jose-crouchwalk_17
+  - first:
+      213: 2904885860391232529
+    second: jose-crouchwalk_18
+  - first:
+      213: -5705873164269613838
+    second: jose-crouchwalk_19
+  - first:
+      213: -8504362872688023404
+    second: jose-crouchwalk_20
+  - first:
+      213: -657306890829212507
+    second: jose-crouchwalk_21
+  - first:
+      213: -1989141704597139788
+    second: jose-crouchwalk_22
+  - first:
+      213: 6660667330616173455
+    second: jose-crouchwalk_23
+  - first:
+      213: 363252752198454980
+    second: jose-crouchwalk_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 130
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: jose-crouchwalk_0
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 781
+        width: 97
+        height: 172
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 057354d6eb1ea8c40800000000000000
+      internalID: 5515468901661882192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-crouchwalk_1
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 781
+        width: 104
+        height: 166
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf44975d79499af10800000000000000
+      internalID: 2281518066082333947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-crouchwalk_2
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 781
+        width: 104
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66999579fca3c8620800000000000000
+      internalID: 2777659733452626278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-crouchwalk_3
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 781
+        width: 89
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a28a6ae7f2c58bf0800000000000000
+      internalID: -322637428241562973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-crouchwalk_4
+      rect:
+        serializedVersion: 2
+        x: 674
+        y: 781
+        width: 86
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 544677a4a41e09340800000000000000
+      internalID: 4868638906380674117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-crouchwalk_5
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 587
+        width: 89
+        height: 169
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f26d45f6adbf22030800000000000000
+      internalID: 3468611578617976367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-crouchwalk_6
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 588
+        width: 91
+        height: 166
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56c538049e4ecc710800000000000000
+      internalID: 1714997248582179941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-crouchwalk_7
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 588
+        width: 105
+        height: 165
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50e4c5d560a72ad30800000000000000
+      internalID: 4441246350295453189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-crouchwalk_8
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 588
+        width: 109
+        height: 164
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 443fe95a5548a26d0800000000000000
+      internalID: -3014451497185381564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-crouchwalk_9
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 588
+        width: 125
+        height: 163
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1694c5904c7a2220800000000000000
+      internalID: 2461916763143837212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-crouchwalk_10
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 394
+        width: 128
+        height: 164
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33f260da9caafceb0800000000000000
+      internalID: -4697348103156125901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-crouchwalk_11
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 394
+        width: 127
+        height: 167
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a097c5fe310808320800000000000000
+      internalID: 2558185411454990602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-crouchwalk_12
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 394
+        width: 125
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11189bc235d0beef0800000000000000
+      internalID: -77953917665050351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-crouchwalk_13
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 394
+        width: 120
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afd4c3572b88e5640800000000000000
+      internalID: 5070640530518199802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-crouchwalk_14
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 392
+        width: 99
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2556414f36fa9ae00800000000000000
+      internalID: 1056568431426692434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-crouchwalk_15
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 195
+        width: 98
+        height: 179
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02afb56f27fe36a20800000000000000
+      internalID: 3054548249325861408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-crouchwalk_16
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 196
+        width: 98
+        height: 177
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ad147bebf2c23630800000000000000
+      internalID: 3905398214126476709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-crouchwalk_17
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 198
+        width: 128
+        height: 171
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 165ce125f20cc8310800000000000000
+      internalID: 1408712092933866849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-crouchwalk_18
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 199
+        width: 142
+        height: 165
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 114acad9c4a305820800000000000000
+      internalID: 2904885860391232529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-crouchwalk_19
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 199
+        width: 149
+        height: 164
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fc864e869aa0d0b0800000000000000
+      internalID: -5705873164269613838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-crouchwalk_20
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 5
+        width: 150
+        height: 166
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 498e86c760f6af980800000000000000
+      internalID: -8504362872688023404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-crouchwalk_21
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 5
+        width: 150
+        height: 167
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a455b78dd6c0e6f0800000000000000
+      internalID: -657306890829212507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-crouchwalk_22
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 4
+        width: 142
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4be829998262564e0800000000000000
+      internalID: -1989141704597139788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-crouchwalk_23
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 4
+        width: 124
+        height: 177
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f832d60c5a17f6c50800000000000000
+      internalID: 6660667330616173455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jose-crouchwalk_24
+      rect:
+        serializedVersion: 2
+        x: 673
+        y: 3
+        width: 101
+        height: 182
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cec87a14788a0500800000000000000
+      internalID: 363252752198454980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 2a09fe1aebc654347aed1f0034b16f8c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      jose-crouchwalk_0: 5515468901661882192
+      jose-crouchwalk_1: 2281518066082333947
+      jose-crouchwalk_10: -4697348103156125901
+      jose-crouchwalk_11: 2558185411454990602
+      jose-crouchwalk_12: -77953917665050351
+      jose-crouchwalk_13: 5070640530518199802
+      jose-crouchwalk_14: 1056568431426692434
+      jose-crouchwalk_15: 3054548249325861408
+      jose-crouchwalk_16: 3905398214126476709
+      jose-crouchwalk_17: 1408712092933866849
+      jose-crouchwalk_18: 2904885860391232529
+      jose-crouchwalk_19: -5705873164269613838
+      jose-crouchwalk_2: 2777659733452626278
+      jose-crouchwalk_20: -8504362872688023404
+      jose-crouchwalk_21: -657306890829212507
+      jose-crouchwalk_22: -1989141704597139788
+      jose-crouchwalk_23: 6660667330616173455
+      jose-crouchwalk_24: 363252752198454980
+      jose-crouchwalk_3: -322637428241562973
+      jose-crouchwalk_4: 4868638906380674117
+      jose-crouchwalk_5: 3468611578617976367
+      jose-crouchwalk_6: 1714997248582179941
+      jose-crouchwalk_7: 4441246350295453189
+      jose-crouchwalk_8: -3014451497185381564
+      jose-crouchwalk_9: 2461916763143837212
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

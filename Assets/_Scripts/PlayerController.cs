@@ -92,8 +92,15 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
 
     // Máquina de estados modular
-    public enum PlayerState { Idle, Walk, Sprint, Exhausted, Airborne, Sliding, WallSliding, Crouch, LedgeGrabbing }
+    public enum PlayerState { Idle, Walk, Sprint, Exhausted, Airborne, Sliding, WallSliding, Crouch, LedgeGrabbing, CrouchWalk, Rolling, Hurt }
     public PlayerState currentState;
+
+    private float damageTimer = 0f;
+
+    public void TriggerDamageAnimation()
+    {
+        damageTimer = 0.4f; // Muestra la animación de daño sin inmovilizarte
+    }
 
     [System.Obsolete]
     private void Awake()
@@ -128,6 +135,7 @@ public class PlayerController : MonoBehaviour
 
         if (slideCooldownTimer > 0) slideCooldownTimer -= Time.deltaTime;
         if (ledgeCooldownTimer > 0) ledgeCooldownTimer -= Time.deltaTime;
+        if (damageTimer > 0) damageTimer -= Time.deltaTime;
 
         CheckGrounded();
         CheckWall();
@@ -186,7 +194,6 @@ public class PlayerController : MonoBehaviour
                     animatorState = 1; // Walk
                     break;
                 case PlayerState.Sprint:
-                case PlayerState.Sliding:
                     animatorState = 2; // Run
                     break;
                 case PlayerState.Airborne:
@@ -199,11 +206,26 @@ public class PlayerController : MonoBehaviour
                 case PlayerState.LedgeGrabbing:
                     animatorState = 5; // Animación de escalar / agarrarse al borde
                     break;
+                case PlayerState.CrouchWalk:
+                    animatorState = 6; // Animación de caminar agachado
+                    break;
+                case PlayerState.Rolling:
+                    animatorState = 8; // Animación de rodar (Restaurado a 8)
+                    break;
+                case PlayerState.Hurt:
+                    animatorState = 7; // Animación de daño (Restaurado a 7)
+                    break;
+            }
+
+            // Forzar visual de daño si recibimos el trigger desde PlayerHealth
+            if (damageTimer > 0f)
+            {
+                animatorState = 7;
             }
 
             animator.SetInteger("state", animatorState);
         }
-
+    
         // Voltear el sprite según la dirección del movimiento en X
         if (input.MoveInput.x > 0.1f)
         {
@@ -443,17 +465,17 @@ public class PlayerController : MonoBehaviour
             {
                 if (!isCrouching) StartCrouch();
                 
-                // Si el jugador se mueve, aplicamos la velocidad de agachado
+                // Si el jugador se mueve, aplicamos la velocidad de agachado y estado CrouchWalk
                 if (moveDirection.magnitude > 0.1f)
                 {
                     currentSpeed = crouchSpeed;
+                    currentState = PlayerState.CrouchWalk;
                 }
                 else
                 {
                     currentSpeed = 0f;
+                    currentState = PlayerState.Crouch;
                 }
-                
-                currentState = PlayerState.Crouch;
             }
             else
             {
@@ -525,7 +547,7 @@ public class PlayerController : MonoBehaviour
         isSliding = true;
         slideTimer = slideDuration;
         slideCooldownTimer = slideCooldown; // Reiniciar cooldown
-        currentState = PlayerState.Sliding;
+        currentState = PlayerState.Rolling;
 
         // Guardar la dirección del slide (X)
         slideDirectionX = input.MoveInput.x > 0 ? 1f : -1f;
@@ -653,8 +675,8 @@ public class PlayerController : MonoBehaviour
     {
         if (hit.gameObject.CompareTag("enemyAttack"))
         {
-            
-            RestartGame();
+            // Evitar que mate instantáneamente ya que PlayerHealth maneja la salud
+            // RestartGame();
         }
     }
 

@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject settingsPanel;
 
     [Header("Level Loading")]
-    [SerializeField] private string newGameSceneName = "Level1";
+    [SerializeField] private string newGameSceneName = "Cinematica_Intro";
 
     private void Start()
     {
