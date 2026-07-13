@@ -9493,9 +9493,35 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 545411307477782147, guid: f797be3455e946c88fbcf2314a1334b0,
         type: 3}
+      propertyPath: attackClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d62a076d2ae9d9945af90586a59f2613, type: 3}
+    - target: {fileID: 545411307477782147, guid: f797be3455e946c88fbcf2314a1334b0,
+        type: 3}
+      propertyPath: patrolClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 001c74cdcbb99c9449699e16455580d9, type: 3}
+    - target: {fileID: 545411307477782147, guid: f797be3455e946c88fbcf2314a1334b0,
+        type: 3}
       propertyPath: solidLayerMask.m_Bits
       value: 65
       objectReference: {fileID: 0}
+    - target: {fileID: 747457365369389746, guid: f797be3455e946c88fbcf2314a1334b0,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3226558476046996452, guid: f797be3455e946c88fbcf2314a1334b0,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8f588114865afe24fbc1b487071a921b, type: 2}
+    - target: {fileID: 3770386991937137933, guid: f797be3455e946c88fbcf2314a1334b0,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2181878979901482097, guid: a7604bdcc3e44f843ac192a7e9c5c83a,
+        type: 3}
     - target: {fileID: 3983501982472429474, guid: f797be3455e946c88fbcf2314a1334b0,
         type: 3}
       propertyPath: m_LocalPosition.x

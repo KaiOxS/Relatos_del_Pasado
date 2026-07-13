@@ -1,0 +1,780 @@
+fileFormatVersion: 2
+guid: 63b98695b48062f4a808452b2a7d511f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -9112938242770187458
+    second: dama-scream_0
+  - first:
+      213: -7688826399180415624
+    second: dama-scream_1
+  - first:
+      213: -7211783318014569004
+    second: dama-scream_2
+  - first:
+      213: 5380842768075941796
+    second: dama-scream_3
+  - first:
+      213: 7050698651282199704
+    second: dama-scream_4
+  - first:
+      213: -7780058544739554555
+    second: dama-scream_5
+  - first:
+      213: 4910534842283385669
+    second: dama-scream_6
+  - first:
+      213: 1549266246397927401
+    second: dama-scream_7
+  - first:
+      213: -2777066995968866105
+    second: dama-scream_8
+  - first:
+      213: 5209643831175717494
+    second: dama-scream_9
+  - first:
+      213: -8539162701915970305
+    second: dama-scream_10
+  - first:
+      213: -6088678933654491012
+    second: dama-scream_11
+  - first:
+      213: -1386919860980427798
+    second: dama-scream_12
+  - first:
+      213: 4663958701210512115
+    second: dama-scream_13
+  - first:
+      213: 8871428067865162727
+    second: dama-scream_14
+  - first:
+      213: -4486278517636413954
+    second: dama-scream_15
+  - first:
+      213: -6773815306948884844
+    second: dama-scream_16
+  - first:
+      213: 3758921427006308483
+    second: dama-scream_17
+  - first:
+      213: -813117241172930164
+    second: dama-scream_18
+  - first:
+      213: 3762490840029232821
+    second: dama-scream_19
+  - first:
+      213: -5490490469123620605
+    second: dama-scream_20
+  - first:
+      213: -8199179345907545967
+    second: dama-scream_21
+  - first:
+      213: 8655315792865494603
+    second: dama-scream_22
+  - first:
+      213: -8740727525775076018
+    second: dama-scream_23
+  - first:
+      213: -5849119789250769770
+    second: dama-scream_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dama-scream_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1027
+        width: 156
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3b4c9b53f6588180800000000000000
+      internalID: -9112938242770187458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-scream_1
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 1031
+        width: 155
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87d9439802dcb4590800000000000000
+      internalID: -7688826399180415624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-scream_2
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 1034
+        width: 153
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d557ac28499aeb90800000000000000
+      internalID: -7211783318014569004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-scream_3
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 1036
+        width: 150
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a765671df79caa40800000000000000
+      internalID: 5380842768075941796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-scream_4
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 1040
+        width: 145
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8945000311d19d160800000000000000
+      internalID: 7050698651282199704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-scream_5
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 786
+        width: 141
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50b6e0d59fda70490800000000000000
+      internalID: -7780058544739554555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-scream_6
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 789
+        width: 135
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 543ea730c69b52440800000000000000
+      internalID: 4910534842283385669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-scream_7
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 791
+        width: 129
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ef1d075179108510800000000000000
+      internalID: 1549266246397927401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-scream_8
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 793
+        width: 124
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c880dbd740e579d0800000000000000
+      internalID: -2777066995968866105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-scream_9
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 795
+        width: 122
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 672a88b667f5c4840800000000000000
+      internalID: 5209643831175717494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-scream_10
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 540
+        width: 122
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff4a809d3ccce7980800000000000000
+      internalID: -8539162701915970305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-scream_11
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 541
+        width: 123
+        height: 217
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c70be10e4caa08ba0800000000000000
+      internalID: -6088678933654491012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-scream_12
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 541
+        width: 124
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae3d3521cbba0cce0800000000000000
+      internalID: -1386919860980427798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-scream_13
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 541
+        width: 124
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3faaeb06ab5b9b040800000000000000
+      internalID: 4663958701210512115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-scream_14
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 540
+        width: 122
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e3788b23d4ad1b70800000000000000
+      internalID: 8871428067865162727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-scream_15
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 283
+        width: 121
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef5c0d025798db1c0800000000000000
+      internalID: -4486278517636413954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-scream_16
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 280
+        width: 116
+        height: 196
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49645371ed29ef1a0800000000000000
+      internalID: -6773815306948884844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-scream_17
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 278
+        width: 110
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 380c05b4f1f5a2430800000000000000
+      internalID: 3758921427006308483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-scream_18
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 275
+        width: 105
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c81542f5d2a37b4f0800000000000000
+      internalID: -813117241172930164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-scream_19
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 274
+        width: 102
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5be7a960c7d073430800000000000000
+      internalID: 3762490840029232821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-scream_20
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 14
+        width: 97
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3010839120cddc3b0800000000000000
+      internalID: -5490490469123620605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-scream_21
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 12
+        width: 94
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 198067573d9a63e80800000000000000
+      internalID: -8199179345907545967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-scream_22
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 9
+        width: 88
+        height: 177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4683941bdbdd1870800000000000000
+      internalID: 8655315792865494603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-scream_23
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 6
+        width: 87
+        height: 177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4592bb20a2b2b680800000000000000
+      internalID: -8740727525775076018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-scream_24
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 4
+        width: 83
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69c0009aa80c3dea0800000000000000
+      internalID: -5849119789250769770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      dama-scream_0: -9112938242770187458
+      dama-scream_1: -7688826399180415624
+      dama-scream_10: -8539162701915970305
+      dama-scream_11: -6088678933654491012
+      dama-scream_12: -1386919860980427798
+      dama-scream_13: 4663958701210512115
+      dama-scream_14: 8871428067865162727
+      dama-scream_15: -4486278517636413954
+      dama-scream_16: -6773815306948884844
+      dama-scream_17: 3758921427006308483
+      dama-scream_18: -813117241172930164
+      dama-scream_19: 3762490840029232821
+      dama-scream_2: -7211783318014569004
+      dama-scream_20: -5490490469123620605
+      dama-scream_21: -8199179345907545967
+      dama-scream_22: 8655315792865494603
+      dama-scream_23: -8740727525775076018
+      dama-scream_24: -5849119789250769770
+      dama-scream_3: 5380842768075941796
+      dama-scream_4: 7050698651282199704
+      dama-scream_5: -7780058544739554555
+      dama-scream_6: 4910534842283385669
+      dama-scream_7: 1549266246397927401
+      dama-scream_8: -2777066995968866105
+      dama-scream_9: 5209643831175717494
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

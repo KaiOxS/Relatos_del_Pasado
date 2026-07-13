@@ -1,0 +1,780 @@
+fileFormatVersion: 2
+guid: a7604bdcc3e44f843ac192a7e9c5c83a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2181878979901482097
+    second: dama-idle_0
+  - first:
+      213: -71981515135198129
+    second: dama-idle_1
+  - first:
+      213: -2365547011049723632
+    second: dama-idle_2
+  - first:
+      213: -8100634729255255265
+    second: dama-idle_3
+  - first:
+      213: 4146457198447705830
+    second: dama-idle_4
+  - first:
+      213: 5902806569537570351
+    second: dama-idle_5
+  - first:
+      213: -3497688182804318600
+    second: dama-idle_6
+  - first:
+      213: 2698305328201580120
+    second: dama-idle_7
+  - first:
+      213: 5150819606422452005
+    second: dama-idle_8
+  - first:
+      213: 2376551450637398858
+    second: dama-idle_9
+  - first:
+      213: -7483967361587756639
+    second: dama-idle_10
+  - first:
+      213: -1390969184444965083
+    second: dama-idle_11
+  - first:
+      213: 9208170881787901024
+    second: dama-idle_12
+  - first:
+      213: 6953599063513500860
+    second: dama-idle_13
+  - first:
+      213: -8944953251312349399
+    second: dama-idle_14
+  - first:
+      213: 7345086432137489902
+    second: dama-idle_15
+  - first:
+      213: 8246679887641577134
+    second: dama-idle_16
+  - first:
+      213: -6744926338575179538
+    second: dama-idle_17
+  - first:
+      213: 730936147597567987
+    second: dama-idle_18
+  - first:
+      213: -5847994379735840583
+    second: dama-idle_19
+  - first:
+      213: -4338857531029950847
+    second: dama-idle_20
+  - first:
+      213: 1140362615032621422
+    second: dama-idle_21
+  - first:
+      213: 7361507950351220501
+    second: dama-idle_22
+  - first:
+      213: -7524767431092955850
+    second: dama-idle_23
+  - first:
+      213: 5341253130450736138
+    second: dama-idle_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 120
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dama-idle_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1024
+        width: 162
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1746be34f57974e10800000000000000
+      internalID: 2181878979901482097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-idle_1
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 1024
+        width: 154
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4cd8ff7135400ff0800000000000000
+      internalID: -71981515135198129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-idle_2
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 1024
+        width: 144
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 019e4e2d683eb2fd0800000000000000
+      internalID: -2365547011049723632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-idle_3
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 1024
+        width: 138
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f134c8bf1a3c49f80800000000000000
+      internalID: -8100634729255255265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-idle_4
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 1025
+        width: 132
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ee36d56adc2b8930800000000000000
+      internalID: 4146457198447705830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-idle_5
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 769
+        width: 129
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f260123fc4bfae150800000000000000
+      internalID: 5902806569537570351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-idle_6
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 770
+        width: 128
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 876fdd81127b57fc0800000000000000
+      internalID: -3497688182804318600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-idle_7
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 770
+        width: 128
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85ebff6566e427520800000000000000
+      internalID: 2698305328201580120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-idle_8
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 770
+        width: 130
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5277dee44236b7740800000000000000
+      internalID: 5150819606422452005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-idle_9
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 769
+        width: 132
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a437eade3f43bf020800000000000000
+      internalID: 2376551450637398858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-idle_10
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 513
+        width: 132
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a1c1fd165b932890800000000000000
+      internalID: -7483967361587756639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-idle_11
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 514
+        width: 131
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52f94ab75e842bce0800000000000000
+      internalID: -1390969184444965083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-idle_12
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 513
+        width: 136
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 064301841aef9cf70800000000000000
+      internalID: 9208170881787901024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-idle_13
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 513
+        width: 143
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbc063ba185208060800000000000000
+      internalID: 6953599063513500860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-idle_14
+      rect:
+        serializedVersion: 2
+        x: 813
+        y: 513
+        width: 149
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92f4d0b09642dd380800000000000000
+      internalID: -8944953251312349399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-idle_15
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 257
+        width: 154
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eeda810b13dfee560800000000000000
+      internalID: 7345086432137489902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-idle_16
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 257
+        width: 160
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea60c3f3aa7127270800000000000000
+      internalID: 8246679887641577134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-idle_17
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 257
+        width: 160
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee0ec013b353562a0800000000000000
+      internalID: -6744926338575179538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-idle_18
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 257
+        width: 160
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f7ab07bd8ec42a00800000000000000
+      internalID: 730936147597567987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-idle_19
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 257
+        width: 154
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b84d5b7810c7dea0800000000000000
+      internalID: -5847994379735840583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-idle_20
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 1
+        width: 153
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18e6ee3501849c3c0800000000000000
+      internalID: -4338857531029950847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-idle_21
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 1
+        width: 149
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e69a728a1c163df00800000000000000
+      internalID: 1140362615032621422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-idle_22
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 1
+        width: 142
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51ff5e75a74592660800000000000000
+      internalID: 7361507950351220501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-idle_23
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 1
+        width: 136
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 635964ca3e7a29790800000000000000
+      internalID: -7524767431092955850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dama-idle_24
+      rect:
+        serializedVersion: 2
+        x: 771
+        y: 1
+        width: 132
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0495f74c61ff1a40800000000000000
+      internalID: 5341253130450736138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      dama-idle_0: 2181878979901482097
+      dama-idle_1: -71981515135198129
+      dama-idle_10: -7483967361587756639
+      dama-idle_11: -1390969184444965083
+      dama-idle_12: 9208170881787901024
+      dama-idle_13: 6953599063513500860
+      dama-idle_14: -8944953251312349399
+      dama-idle_15: 7345086432137489902
+      dama-idle_16: 8246679887641577134
+      dama-idle_17: -6744926338575179538
+      dama-idle_18: 730936147597567987
+      dama-idle_19: -5847994379735840583
+      dama-idle_2: -2365547011049723632
+      dama-idle_20: -4338857531029950847
+      dama-idle_21: 1140362615032621422
+      dama-idle_22: 7361507950351220501
+      dama-idle_23: -7524767431092955850
+      dama-idle_24: 5341253130450736138
+      dama-idle_3: -8100634729255255265
+      dama-idle_4: 4146457198447705830
+      dama-idle_5: 5902806569537570351
+      dama-idle_6: -3497688182804318600
+      dama-idle_7: 2698305328201580120
+      dama-idle_8: 5150819606422452005
+      dama-idle_9: 2376551450637398858
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -6,25 +6,40 @@ public class DamaTapadaAI : BaseEnemyAI
     [Header("Dama Tapada Settings")]
     public float auraRadius = 0.6f;
     public float auraLethalTime = 3f;
-    
+
     [Header("Flying Settings")]
     public float detectionRadius = 9f;
     public float reactionTime = 1f;
+
+    [Header("Animations")]
+    public Animator animator;
+    public SpriteRenderer spriteRenderer;
+    [Tooltip("Ajuste vertical del sprite para alinear los pies con el suelo")]
+    public float visualOffsetY = 0f;
+
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip patrolClip;
+    public AudioClip attackClip;
     public float flightSpeed = 1.5f;
     public float chaseFlightSpeed = 3.5f;
     public float floatAmplitude = 0.5f;
     public float floatFrequency = 2f;
-    
+
+    [Header("Flip Settings")]
+    [SerializeField] private bool mirandoDerecha = true;
+
     private float initialY;
     private float currentReactionTimer = 0f;
     private float timeInAura = 0f;
     private bool playerInAura = false;
-    
+    private bool triggerAttack = false;
+
     private PlayerController playerCtrl;
     private Vector3 randomWanderTarget;
     private bool hasWanderTarget = false;
     private Transform veloTransform;
-    
+
     // Puntos de patrullaje simple
     public Transform[] patrolPoints;
     private int currentPatrolIndex;
@@ -42,6 +57,8 @@ public class DamaTapadaAI : BaseEnemyAI
         initialY = transform.position.y;
         playerCtrl = FindObjectOfType<PlayerController>();
 
+        animator = GetComponentInChildren<Animator>();
+
         // Buscar el velo en la escena
         CollectibleItem[] items = FindObjectsOfType<CollectibleItem>();
         foreach (var item in items)
@@ -54,10 +71,32 @@ public class DamaTapadaAI : BaseEnemyAI
         }
     }
 
+    private void ControlarVolteo(float destinoX)
+    {
+        // Si el destino está a la derecha y mira a la izquierda
+        if (destinoX > transform.position.x && !mirandoDerecha)
+        {
+            Voltear();
+        }
+        // Si el destino está a la izquierda y mira a la derecha
+        else if (destinoX < transform.position.x && mirandoDerecha)
+        {
+            Voltear();
+        }
+    }
+
+    private void Voltear()
+    {
+        mirandoDerecha = !mirandoDerecha;
+        Vector3 escala = transform.localScale;
+        escala.x *= -1;
+        transform.localScale = escala;
+    }
+
     protected override void UpdatePatrol()
     {
         if (playerTransform == null) return;
-        
+
         float currentDetectionRadius = detectionRadius;
         float currentReactionTime = reactionTime;
 
@@ -69,7 +108,7 @@ public class DamaTapadaAI : BaseEnemyAI
             {
                 // Modo más agresivo: aumenta el rango de visión y reacciona al instante
                 currentDetectionRadius *= 1.8f;
-                currentReactionTime *= 0.2f; 
+                currentReactionTime *= 0.2f;
             }
             else
             {
@@ -78,11 +117,11 @@ public class DamaTapadaAI : BaseEnemyAI
                 currentReactionTime *= 1.5f;
             }
         }
-        
+
         // Modificar radio según estado del jugador
         if (playerCtrl != null)
         {
-            if (playerCtrl.currentState == PlayerController.PlayerState.Crouch || 
+            if (playerCtrl.currentState == PlayerController.PlayerState.Crouch ||
                 playerCtrl.currentState == PlayerController.PlayerState.CrouchWalk)
             {
                 currentDetectionRadius *= 0.35f; // 65% más difícil de detectar si está agachado
@@ -94,7 +133,7 @@ public class DamaTapadaAI : BaseEnemyAI
             }
             // Si corre, rueda o salta, usa el radio de detección completo (100%)
         }
-        
+
         float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
         if (distanceToPlayer <= currentDetectionRadius)
         {
@@ -116,14 +155,17 @@ public class DamaTapadaAI : BaseEnemyAI
         {
             Transform target = patrolPoints[currentPatrolIndex];
             Vector3 targetPos = target.position;
-            
+
             // Simular vuelo suave
             float newY = initialY + Mathf.Sin(Time.time * floatFrequency) * floatAmplitude;
             targetPos.y = newY;
             targetPos.z = transform.position.z; // Mantener Z
-            
+
+            // Control de direccion en x
+            ControlarVolteo(targetPos.x);
+
             transform.position = Vector3.MoveTowards(transform.position, targetPos, flightSpeed * Time.deltaTime);
-            
+
             if (Vector3.Distance(transform.position, targetPos) < 1f)
             {
                 currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
@@ -141,9 +183,10 @@ public class DamaTapadaAI : BaseEnemyAI
 
             Vector3 targetPos = randomWanderTarget;
             targetPos.y = initialY + Mathf.Sin(Time.time * floatFrequency) * floatAmplitude;
-            
+            // Control de direccion en x
+            ControlarVolteo(targetPos.x);
             transform.position = Vector3.MoveTowards(transform.position, targetPos, flightSpeed * Time.deltaTime);
-            
+
             if (Vector3.Distance(transform.position, targetPos) < 1f)
             {
                 hasWanderTarget = false;
@@ -166,7 +209,8 @@ public class DamaTapadaAI : BaseEnemyAI
         // Volar hacia el jugador flotando
         targetPos.y += Mathf.Sin(Time.time * floatFrequency) * floatAmplitude;
         targetPos.z = transform.position.z; // Mantener Z
-        
+        // Control de direccion en x
+        ControlarVolteo(targetPos.x);
         transform.position = Vector3.MoveTowards(transform.position, targetPos, chaseFlightSpeed * Time.deltaTime);
     }
 
@@ -183,7 +227,7 @@ public class DamaTapadaAI : BaseEnemyAI
         {
             currentState = AIState.Chase;
         }
-        
+
         Vector3 targetPos = transform.position;
         targetPos.y += Mathf.Sin(Time.time * floatFrequency * 0.5f) * (floatAmplitude * 0.2f);
         transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime);
@@ -201,6 +245,91 @@ public class DamaTapadaAI : BaseEnemyAI
     {
         base.Update();
         CheckAura();
+        UpdateVisuals();
+        UpdateAudio();
+    }
+
+    private void UpdateAudio()
+    {
+        if (audioSource == null) return;
+
+        // 1. Si está gritando (atacando), esperamos a que termine para hacer cualquier otra cosa
+        if (audioSource.clip == attackClip && audioSource.isPlaying)
+        {
+            return;
+        }
+
+        // 2. Si no está aturdida, vuelve a cantar
+        if (currentState != AIState.Stunned)
+        {
+            if (patrolClip != null)
+            {
+                if (audioSource.clip != patrolClip)
+                {
+                    audioSource.clip = patrolClip;
+                    audioSource.loop = true;
+                    audioSource.Play();
+                }
+                else if (!audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                }
+            }
+        }
+        else
+        {
+            // 3. Si está aturdida, se calla por completo
+            if (audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
+        }
+    }
+
+    private void UpdateVisuals()
+    {
+        if (animator == null) return;
+
+        int animatorState = 0;
+
+        if (triggerAttack)
+        {
+            animatorState = 1; // Animación al hacer daño
+            triggerAttack = false; // Lo apagamos enseguida para delegarle el control al Animator
+        }
+        else
+        {
+            animatorState = 0; // Animación Idle/Vuelo normal
+        }
+
+        switch (animatorState)
+        {
+            case 0:
+                animator.SetInteger("state", 0);
+                break;
+            case 1:
+                animator.SetInteger("state", 1);
+                break;
+        }
+    }
+
+    protected override void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
+
+        // Si choca con el jugador y no está aturdida, activamos la animación de daño (estado 1)
+        if (other.CompareTag("Player") && currentState != AIState.Stunned)
+        {
+            triggerAttack = true;
+
+            // Reproducir sonido de grito/ataque cortando inmediatamente el canto
+            if (audioSource != null && attackClip != null)
+            {
+                audioSource.clip = attackClip;
+                audioSource.loop = false;
+                audioSource.Play();
+            }
+        }
     }
 
     private void CheckAura()
@@ -220,7 +349,7 @@ public class DamaTapadaAI : BaseEnemyAI
             }
 
             timeInAura += Time.deltaTime;
-            
+
             if (timeInAura >= auraLethalTime)
             {
                 ExecuteInstaKill();
@@ -257,7 +386,7 @@ public class DamaTapadaAI : BaseEnemyAI
             UnityEngine.SceneManagement.SceneManager.LoadScene("Greybox_Prototipo");
         }
     }
-    
+
     // Visualización en el Editor
     private void OnDrawGizmosSelected()
     {
