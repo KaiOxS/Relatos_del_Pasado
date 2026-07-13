@@ -31,10 +31,24 @@ public class LevelManager : MonoBehaviour
         }
 
         // Si hay un checkpoint guardado, movemos al jugador ahí al iniciar la escena
-        string checkpointName = PlayerPrefs.GetString("LastCheckpoint", "");
+        string checkpointName = PlayerPrefs.GetString("LastCheckpoint", "").Trim();
         if (!string.IsNullOrEmpty(checkpointName))
         {
             GameObject checkpointObj = GameObject.Find(checkpointName);
+            if (checkpointObj == null)
+            {
+                // Intentar buscar checkpoints inactivos
+                Transform[] allTransforms = Resources.FindObjectsOfTypeAll<Transform>();
+                foreach (Transform t in allTransforms)
+                {
+                    if (t.name.Trim() == checkpointName && t.gameObject.scene.isLoaded)
+                    {
+                        checkpointObj = t.gameObject;
+                        break;
+                    }
+                }
+            }
+
             if (checkpointObj != null)
             {
                 currentCheckpoint = checkpointObj.transform;
@@ -72,16 +86,40 @@ public class LevelManager : MonoBehaviour
 
     public void ShowGameOver()
     {
+        if (gameOverPanel == null)
+        {
+            // Método más seguro: buscar dentro del HUD_Canvas que sabemos que está en la escena
+            GameObject hud = GameObject.Find("HUD_Canvas");
+            if (hud != null)
+            {
+                Transform t = hud.transform.Find("GameOverPanel");
+                if (t == null) t = hud.transform.Find("Panel_GameOver"); // Nombres comunes
+                if (t == null) t = hud.transform.Find("Game_Over");
+                
+                if (t != null)
+                {
+                    gameOverPanel = t.gameObject;
+                }
+            }
+        }
+
         if (gameOverPanel != null)
         {
+            // Borrar todo al morir según petición del usuario
+            SaveSystem.ClearProgress();
+
             gameOverPanel.SetActive(true);
             Time.timeScale = 0f; // Congelar el juego
             Debug.Log("Game Over Panel Activado.");
+            
+            // Forzar que el cursor sea visible por si necesitan dar clic en un botón de reintentar
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
         else
         {
-            Debug.LogWarning("No hay un panel de Game Over asignado en el LevelManager.");
-            // Si no hay panel, recargamos la escena directamente por precaución
+            Debug.LogWarning("No hay un panel de Game Over en la escena. Recargando de inmediato...");
+            SaveSystem.ClearProgress();
             RestartScene();
         }
     }

@@ -199,6 +199,14 @@ public class DamaTapadaAI : BaseEnemyAI
         if (playerTransform == null) return;
 
         float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
+        float currentChaseSpeed = chaseFlightSpeed;
+        
+        // Si el jugador está muy cerca, le metemos un turbo para que no pueda huir solo corriendo
+        if (distanceToPlayer < 7f)
+        {
+            currentChaseSpeed = Mathf.Max(currentChaseSpeed, 8f); // Mayor que la velocidad de sprint de José (7f)
+        }
+
         if (distanceToPlayer > detectionRadius * 1.5f) // Margen para no perderlo de inmediato
         {
             currentState = AIState.Patrol;
@@ -211,7 +219,7 @@ public class DamaTapadaAI : BaseEnemyAI
         targetPos.z = transform.position.z; // Mantener Z
         // Control de direccion en x
         ControlarVolteo(targetPos.x);
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, chaseFlightSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, currentChaseSpeed * Time.deltaTime);
     }
 
     public override void ApplyStun()

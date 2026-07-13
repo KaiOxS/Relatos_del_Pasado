@@ -29,6 +29,12 @@ public static class SaveSystem
         
         ClearInventory();
 
+        if (InventorySystem.Instance != null)
+        {
+            InventorySystem.Instance.items.Clear();
+            InventorySystem.Instance.UpdateInventoryUI();
+        }
+
         PlayerPrefs.Save();
         Debug.Log("Progreso borrado.");
     }

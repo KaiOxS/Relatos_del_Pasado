@@ -26,9 +26,25 @@ public class SceneTransition : MonoBehaviour
         // Detectar si lo que entró a la cueva es el Jugador
         if (other.CompareTag("Player") && !isTransitioning)
         {
+            // Protección contra bucles infinitos: si el jugador aparece exactamente encima de esta puerta,
+            // no dejar que se active en los primeros 2 segundos de haber cargado el nivel.
+            if (Time.timeSinceLevelLoad < 2f) return;
             if (!string.IsNullOrEmpty(requiredItemToUnlock))
             {
-                if (InventorySystem.Instance == null || !InventorySystem.Instance.HasItem(requiredItemToUnlock))
+                if (InventorySystem.Instance == null) return;
+                
+                string needed = requiredItemToUnlock.Trim().ToLower();
+                bool hasIt = false;
+                foreach (var kvp in InventorySystem.Instance.items)
+                {
+                    if (kvp.Key.ToLower() == needed && kvp.Value > 0)
+                    {
+                        hasIt = true; 
+                        break;
+                    }
+                }
+
+                if (!hasIt)
                 {
                     Debug.Log("La puerta está bloqueada. Necesitas: " + requiredItemToUnlock);
                     return; // Bloquea el paso
@@ -56,6 +72,17 @@ public class SceneTransition : MonoBehaviour
         // Congelar al jugador para que no siga cayendo o caminando mientras se oscurece
         CharacterController cc = FindObjectOfType<CharacterController>();
         if (cc != null) cc.enabled = false;
+
+        // Hacer al jugador invulnerable para que los enemigos no lo maten mientras carga
+        PlayerHealth health = FindObjectOfType<PlayerHealth>();
+        if (health != null) health.enabled = false; // Desactivar script de salud
+
+        // Desactivar a la Dama Tapada o enemigos para evitar un InstaKill durante el fundido
+        BaseEnemyAI[] enemies = FindObjectsOfType<BaseEnemyAI>();
+        foreach (var enemy in enemies)
+        {
+            enemy.enabled = false;
+        }
 
         // Crear una pantalla negra automáticamente (sin configurar UI a mano)
         CreateFadeCanvas();

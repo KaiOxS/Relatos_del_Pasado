@@ -32,7 +32,29 @@ public class InventorySystem : MonoBehaviour
         LoadInventory();
     }
 
+    private void OnEnable()
+    {
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
+    {
+        inventoryPanel = null;
+        inventoryOpen = false; // Por defecto cerrado al cambiar de nivel
+        RefreshPanel();
+    }
+
     private void Start()
+    {
+        RefreshPanel();
+    }
+
+    private void RefreshPanel()
     {
         if (inventoryPanel == null)
         {
@@ -58,11 +80,11 @@ public class InventorySystem : MonoBehaviour
         if (inventoryPanel != null)
         {
             UpdateInventoryUI();
-            inventoryPanel.SetActive(false);
+            inventoryPanel.SetActive(inventoryOpen);
         }
         else
         {
-            Debug.LogWarning("No se encontró el InventoryPanel. Asegúrate de tener el HUD_Canvas en la escena.");
+            Debug.LogWarning("No se encontró el InventoryPanel en esta escena.");
         }
     }
 
@@ -92,8 +114,12 @@ public class InventorySystem : MonoBehaviour
         {
             Transform slot = slots[i];
             
-            // Buscar si el slot ya tiene un Text, si no lo creamos
+            // Buscar el texto
             Text textComponent = slot.GetComponentInChildren<Text>();
+            // Buscar la imagen del icono
+            Transform iconTransform = slot.Find("ItemIcon");
+            Image iconImg = iconTransform != null ? iconTransform.GetComponent<Image>() : null;
+
             if (textComponent == null)
             {
                 GameObject txtObj = new GameObject("CantidadText");
@@ -105,35 +131,72 @@ public class InventorySystem : MonoBehaviour
                 
                 textComponent.fontSize = 20;
                 textComponent.color = Color.white;
-                textComponent.alignment = TextAnchor.MiddleCenter;
+                textComponent.alignment = TextAnchor.LowerCenter;
                 
                 RectTransform rt = textComponent.GetComponent<RectTransform>();
                 rt.anchorMin = Vector2.zero;
-                rt.anchorMax = Vector2.one;
+                rt.anchorMax = new Vector2(1f, 0.3f);
                 rt.sizeDelta = Vector2.zero;
                 rt.anchoredPosition = Vector2.zero;
             }
 
+            if (iconImg == null)
+            {
+                GameObject imgObj = new GameObject("ItemIcon");
+                imgObj.transform.SetParent(slot, false);
+                iconImg = imgObj.AddComponent<Image>();
+                iconImg.preserveAspect = true;
+                
+                RectTransform imgRt = iconImg.rectTransform;
+                imgRt.anchorMin = new Vector2(0.1f, 0.3f);
+                imgRt.anchorMax = new Vector2(0.9f, 0.9f);
+                imgRt.sizeDelta = Vector2.zero;
+                imgRt.anchoredPosition = Vector2.zero;
+            }
+
             if (i < validItems.Count)
             {
+                string itemName = validItems[i].Key;
                 // Formatear el texto (Nombre y cantidad)
-                textComponent.text = validItems[i].Key + "\n" + validItems[i].Value;
+                textComponent.text = itemName + "\nx" + validItems[i].Value;
+                
+                // Asignar el sprite
+                Sprite s = GetSpriteFor(itemName);
+                if (s != null)
+                {
+                    iconImg.sprite = s;
+                    iconImg.color = Color.white;
+                }
+                else
+                {
+                    iconImg.color = new Color(1,1,1,0); // Ocultar si no hay sprite
+                }
 
                 // Añadir lógica de click al slot
                 Button btn = slot.GetComponent<Button>();
                 if (btn == null) btn = slot.gameObject.AddComponent<Button>();
                 
-                string itemName = validItems[i].Key;
                 btn.onClick.RemoveAllListeners();
                 btn.onClick.AddListener(() => OnSlotClicked(itemName));
             }
             else
             {
                 textComponent.text = ""; // Slot vacío
+                iconImg.color = new Color(1,1,1,0); // Ocultar
+                
                 Button btn = slot.GetComponent<Button>();
                 if (btn != null) btn.onClick.RemoveAllListeners();
             }
         }
+    }
+
+    private Sprite GetSpriteFor(string itemName)
+    {
+        string spriteName = itemName.ToLower();
+        if (spriteName.Contains("botella") || spriteName.Contains("vidrio")) spriteName = "botella";
+        
+        Sprite s = Resources.Load<Sprite>("Sprites/Objects/" + spriteName);
+        return s;
     }
 
     private void OnSlotClicked(string itemName)
@@ -217,19 +280,38 @@ public class InventorySystem : MonoBehaviour
 
     private void Update()
     {
-        if (Keyboard.current != null && Keyboard.current.tabKey.wasPressedThisFrame)
+        if (Keyboard.current == null) return;
+        
+        // Mantener TAB presionado para mostrar el inventario (se oculta al soltar)
+        bool isTabPressed = Keyboard.current.tabKey.isPressed;
+        if (isTabPressed != inventoryOpen)
         {
-            ToggleInventory();
+            inventoryOpen = isTabPressed;
+            if (inventoryPanel != null)
+            {
+                inventoryPanel.SetActive(inventoryOpen);
+            }
         }
+
+        // Teclas rápidas para consumir objetos
+        if (Keyboard.current.digit1Key.wasPressedThisFrame) UseSlotByIndex(0);
+        if (Keyboard.current.digit2Key.wasPressedThisFrame) UseSlotByIndex(1);
+        if (Keyboard.current.digit3Key.wasPressedThisFrame) UseSlotByIndex(2);
+        if (Keyboard.current.digit4Key.wasPressedThisFrame) UseSlotByIndex(3);
     }
 
-    private void ToggleInventory()
+    private void UseSlotByIndex(int index)
     {
-        inventoryOpen = !inventoryOpen;
-
-        if (inventoryPanel != null)
+        List<KeyValuePair<string, int>> validItems = new List<KeyValuePair<string, int>>();
+        foreach (var kvp in items)
         {
-            inventoryPanel.SetActive(inventoryOpen);
+            if (kvp.Value > 0) validItems.Add(kvp);
+        }
+        
+        if (index >= 0 && index < validItems.Count)
+        {
+            string itemName = validItems[index].Key;
+            OnSlotClicked(itemName);
         }
     }
 }
