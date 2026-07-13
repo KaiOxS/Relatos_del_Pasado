@@ -1271,6 +1271,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MainMenu
   mainMenuPanel: {fileID: 1633905908}
   settingsPanel: {fileID: 1686759628}
+  tituloSprite: {fileID: 6680050650163475411, guid: df8f3d4065bc7b54ea8d2146373ec3bc,
+    type: 3}
+  tituloSize: {x: 500, y: 700}
+  tituloPosY: 270
+  menuShiftY: -270
   newGameSceneName: Cinematica_Intro
 --- !u!1 &672680858
 GameObject:

@@ -19,7 +19,7 @@ public class InventorySystem : MonoBehaviour
         BotellaAlcanfor, Analgesicos, 
         BotellaVidrio, Piedra, PedazoVidrio, 
         Energizante, Esteroides,
-        Tripas, Velo, Sombrero, PiedraFaltante
+        Tripas, Velo, Sombrero, PiedraFaltante, Pala
     }
 
     private bool inventoryOpen = false;

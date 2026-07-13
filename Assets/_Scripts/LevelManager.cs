@@ -128,4 +128,75 @@ public class LevelManager : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
+
+    public void ShowEndDemoScreen()
+    {
+        Time.timeScale = 0f; // Congelar el juego
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        // Crear Canvas desde cero en código para no tener que configurar nada en el Inspector
+        GameObject canvasObj = new GameObject("EndDemoCanvas");
+        Canvas canvas = canvasObj.AddComponent<Canvas>();
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvas.sortingOrder = 999;
+        canvasObj.AddComponent<UnityEngine.UI.CanvasScaler>();
+        canvasObj.AddComponent<UnityEngine.UI.GraphicRaycaster>();
+
+        // Crear Fondo Negro translúcido
+        GameObject bgObj = new GameObject("Background");
+        bgObj.transform.SetParent(canvasObj.transform, false);
+        UnityEngine.UI.Image bgImg = bgObj.AddComponent<UnityEngine.UI.Image>();
+        bgImg.color = new Color(0, 0, 0, 0.95f);
+        RectTransform bgRt = bgImg.rectTransform;
+        bgRt.anchorMin = Vector2.zero;
+        bgRt.anchorMax = Vector2.one;
+        bgRt.sizeDelta = Vector2.zero;
+
+        // Crear Texto de felicitación
+        GameObject textObj = new GameObject("Text");
+        textObj.transform.SetParent(canvasObj.transform, false);
+        UnityEngine.UI.Text text = textObj.AddComponent<UnityEngine.UI.Text>();
+        text.text = "¡Fin de la demo, gracias por jugar!";
+        text.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        text.fontSize = 50;
+        text.color = Color.white;
+        text.alignment = TextAnchor.MiddleCenter;
+        RectTransform txtRt = text.rectTransform;
+        txtRt.anchorMin = new Vector2(0f, 0.4f);
+        txtRt.anchorMax = new Vector2(1f, 0.7f);
+        txtRt.sizeDelta = Vector2.zero;
+
+        // Crear Botón de Salir
+        GameObject btnObj = new GameObject("ExitButton");
+        btnObj.transform.SetParent(canvasObj.transform, false);
+        UnityEngine.UI.Image btnImg = btnObj.AddComponent<UnityEngine.UI.Image>();
+        btnImg.color = new Color(0.15f, 0.15f, 0.15f, 1f);
+        UnityEngine.UI.Button btn = btnObj.AddComponent<UnityEngine.UI.Button>();
+        
+        GameObject btnTxtObj = new GameObject("Text");
+        btnTxtObj.transform.SetParent(btnObj.transform, false);
+        UnityEngine.UI.Text btnText = btnTxtObj.AddComponent<UnityEngine.UI.Text>();
+        btnText.text = "Volver al Menú Principal";
+        btnText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        btnText.fontSize = 30;
+        btnText.color = Color.white;
+        btnText.alignment = TextAnchor.MiddleCenter;
+        RectTransform btnTxtRt = btnText.rectTransform;
+        btnTxtRt.anchorMin = Vector2.zero;
+        btnTxtRt.anchorMax = Vector2.one;
+        btnTxtRt.sizeDelta = Vector2.zero;
+
+        RectTransform btnRt = btnImg.rectTransform;
+        btnRt.anchorMin = new Vector2(0.3f, 0.2f);
+        btnRt.anchorMax = new Vector2(0.7f, 0.35f);
+        btnRt.sizeDelta = Vector2.zero;
+
+        // Lógica del botón
+        btn.onClick.AddListener(() => {
+            Time.timeScale = 1f;
+            SaveSystem.ClearProgress(); // Opcional: borrar guardado al terminar la demo
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        });
+    }
 }
