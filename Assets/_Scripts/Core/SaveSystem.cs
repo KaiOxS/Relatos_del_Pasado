@@ -26,6 +26,7 @@ public static class SaveSystem
         PlayerPrefs.DeleteKey("LastCheckpoint");
         PlayerPrefs.DeleteKey("PlayerHealth");
         PlayerPrefs.DeleteKey("StoneCount");
+        PlayerPrefs.DeleteKey("TutorialShown");
         
         ClearInventory();
 

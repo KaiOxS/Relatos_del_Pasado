@@ -8754,6 +8754,7 @@ MonoBehaviour:
   fadeDuration: 0.5
   targetSpawnPointName: SalidaDelSubterraneo
   requiredItemToUnlock: Velo
+  lockedMessage: Necesitas recoger el VELO de la dama tapada para avanzar
 --- !u!65 &1016814541
 BoxCollider:
   m_ObjectHideFlags: 0

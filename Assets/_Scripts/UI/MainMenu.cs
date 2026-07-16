@@ -40,6 +40,7 @@ public class MainMenu : MonoBehaviour
         Image img = titleObj.AddComponent<Image>();
         img.sprite = tituloSprite;
         img.preserveAspect = true;
+        img.raycastTarget = false;
 
         RectTransform titleRt = img.rectTransform;
         

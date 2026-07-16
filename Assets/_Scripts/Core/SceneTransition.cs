@@ -18,7 +18,11 @@ public class SceneTransition : MonoBehaviour
     [Tooltip("(Opcional) Objeto que el jugador debe tener para desbloquear esta puerta (ej. Velo, Tripas). Dejar vacío si siempre está abierta.")]
     public string requiredItemToUnlock;
 
+    [Tooltip("Mensaje que aparece en pantalla si intentas entrar sin el objeto necesario")]
+    public string lockedMessage = "Necesitas recoger las tripas de Mariangula para avanzar";
+
     private bool isTransitioning = false;
+    private bool showingMessage = false;
     private Image fadeImage;
 
     private void OnTriggerEnter(Collider other)
@@ -46,7 +50,7 @@ public class SceneTransition : MonoBehaviour
 
                 if (!hasIt)
                 {
-                    Debug.Log("La puerta está bloqueada. Necesitas: " + requiredItemToUnlock);
+                    if (!showingMessage) StartCoroutine(ShowLockedMessage(lockedMessage));
                     return; // Bloquea el paso
                 }
             }
@@ -63,6 +67,46 @@ public class SceneTransition : MonoBehaviour
             
             StartCoroutine(TransitionRoutine());
         }
+    }
+
+    private IEnumerator ShowLockedMessage(string msg)
+    {
+        showingMessage = true;
+
+        // Crear Canvas temporal
+        GameObject canvasObj = new GameObject("LockedMessageCanvas");
+        Canvas canvas = canvasObj.AddComponent<Canvas>();
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvas.sortingOrder = 1000;
+
+        // Crear Texto
+        GameObject textObj = new GameObject("LockedText");
+        textObj.transform.SetParent(canvasObj.transform, false);
+        
+        Text text = textObj.AddComponent<Text>();
+        text.text = msg;
+        text.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf"); // En versiones nuevas de Unity Arial.ttf a veces falla, LegacyRuntime.ttf es seguro o Arial.ttf
+        if (text.font == null) text.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+        
+        text.fontSize = 40;
+        text.alignment = TextAnchor.MiddleCenter;
+        text.color = Color.white;
+        
+        // Sombra/Borde para que se lea en fondos claros
+        Outline outline = textObj.AddComponent<Outline>();
+        outline.effectColor = Color.black;
+        outline.effectDistance = new Vector2(2, -2);
+
+        RectTransform rt = text.rectTransform;
+        rt.anchorMin = new Vector2(0.1f, 0.4f);
+        rt.anchorMax = new Vector2(0.9f, 0.6f);
+        rt.offsetMin = Vector2.zero;
+        rt.offsetMax = Vector2.zero;
+
+        yield return new WaitForSeconds(3f);
+        
+        if (canvasObj != null) Destroy(canvasObj);
+        showingMessage = false;
     }
 
     private IEnumerator TransitionRoutine()

@@ -93,36 +93,18 @@ public class MariangulaAI : BaseEnemyAI
         {
             desiredDir.Normalize();
             float radius = agent.radius > 0 ? agent.radius : 0.5f;
-            
-            // Lanzamos raycast desde el centro (asumiendo altura media de 1 metro)
             Vector3 origin = transform.position + Vector3.up * 1f;
             
             if (Physics.Raycast(origin, desiredDir, out RaycastHit hit, radius + 0.1f, solidLayerMask))
             {
-                // Ignorar colisiones con uno mismo y con el jugador
                 if (!hit.collider.isTrigger && hit.collider.transform.root != transform.root && !hit.collider.CompareTag("Player"))
                 {
                     agent.velocity = Vector3.zero;
                     Vector3 safePos = transform.position;
                     safePos.x = hit.point.x - (desiredDir.x * radius);
                     pos = safePos; 
-                    
-                    // Si se choca con un muro, aumentamos el tiempo atascada
-                    stuckTimer += Time.deltaTime;
-                }
-                else
-                {
-                    stuckTimer = 0f;
                 }
             }
-            else
-            {
-                stuckTimer = 0f; // No hay colisión, reiniciamos temporizador
-            }
-        }
-        else
-        {
-            stuckTimer = 0f;
         }
 
         if (teleportCooldownTimer > 0f)
@@ -130,14 +112,32 @@ public class MariangulaAI : BaseEnemyAI
             teleportCooldownTimer -= Time.deltaTime;
         }
 
-        // --- NUEVO: SISTEMA DE DESATASCO (Si no hay salida o choca con pared) ---
+        // --- SISTEMA DE DESATASCO MEJORADO (Bordes, paredes, esquinas) ---
+        // Si la IA quiere moverse pero su posición real no cambia, está atascada
+        if (!agent.isStopped && (agent.velocity.sqrMagnitude > 0.1f || agent.desiredVelocity.sqrMagnitude > 0.1f))
+        {
+            // Verificamos cuánto se movió realmente en este frame
+            float moveDistance = Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(lastPosition.x, 0, lastPosition.z));
+            if (moveDistance < 0.5f * Time.deltaTime) // Si se mueve lentísimo (chocando con pared o borde de NavMesh)
+            {
+                stuckTimer += Time.deltaTime;
+            }
+            else
+            {
+                stuckTimer = 0f;
+            }
+        }
+        else
+        {
+            stuckTimer = 0f;
+        }
+
         if (enableJumpscareTeleport && !isAttacking && currentState != AIState.Stunned && teleportCooldownTimer <= 0f)
         {
-            // Si la ruta no llega al jugador (ej. cuarto cerrado o abismo)
             bool hasNoPath = (agent.pathStatus == NavMeshPathStatus.PathPartial || agent.pathStatus == NavMeshPathStatus.PathInvalid);
             
-            // Si no tiene ruta o si lleva chocando con un muro más de 0.15 segundos (casi inmediato)
-            if (hasNoPath || stuckTimer > 0.15f)
+            // Si no tiene ruta o si lleva atascada en un borde/muro más de 0.25 segundos
+            if (hasNoPath || stuckTimer > 0.25f)
             {
                 stuckTimer = 0f;
                 TriggerJumpscareTeleport();

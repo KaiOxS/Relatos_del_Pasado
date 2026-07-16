@@ -84,6 +84,22 @@ public class LevelManager : MonoBehaviour
         RestartScene(); // Recargamos la escena para reiniciar a los enemigos y objetos
     }
 
+    public void RestartFromZero()
+    {
+        Time.timeScale = 1f;
+        SaveSystem.ClearProgress(); // Limpiar todo progreso, inventario, vida, checkpoints
+        
+        // Volvemos a la cinemática inicial o menú principal para empezar de cero literalmente
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.LoadSceneAsync("Cinematica_Intro");
+        }
+        else
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Cinematica_Intro");
+        }
+    }
+
     public void ShowGameOver()
     {
         if (gameOverPanel == null)
@@ -108,6 +124,18 @@ public class LevelManager : MonoBehaviour
             // Borrar todo al morir según petición del usuario
             SaveSystem.ClearProgress();
 
+            // Apagar todos los demás Canvases de la escena para que nada se superponga
+            Canvas[] allCanvases = FindObjectsOfType<Canvas>();
+            Canvas gameOverCanvas = gameOverPanel.GetComponentInParent<Canvas>();
+            foreach (Canvas c in allCanvases)
+            {
+                // Ignorar el canvas del Game Over y evitar apagar el fondo negro de las transiciones
+                if (c != gameOverCanvas && c.gameObject.name != "TransitionCanvas")
+                {
+                    c.enabled = false;
+                }
+            }
+
             gameOverPanel.SetActive(true);
             Time.timeScale = 0f; // Congelar el juego
             Debug.Log("Game Over Panel Activado.");
@@ -120,7 +148,7 @@ public class LevelManager : MonoBehaviour
         {
             Debug.LogWarning("No hay un panel de Game Over en la escena. Recargando de inmediato...");
             SaveSystem.ClearProgress();
-            RestartScene();
+            RestartFromZero(); // Cambiado a RestartFromZero en vez de la misma escena
         }
     }
 
